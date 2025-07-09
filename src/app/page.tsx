@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import {
   Calendar,
   MapPin,
@@ -15,6 +16,7 @@ import GlassButton from "@/components/GlassButton";
 import GlassCard from "@/components/GlassCard";
 import ParticleBackground from "@/components/ParticleBackground";
 import CountdownTimer from "@/components/CountdownTimer";
+import VinylRecord from "@/components/VinylRecord";
 
 export default function Home() {
   // Data do evento - 15 de Agosto, 2025 às 19:00
@@ -46,19 +48,24 @@ export default function Home() {
             </motion.div>
 
             <div className="hidden md:flex space-x-8">
-              {["Home", "Line-up", "Ingressos", "Local", "Contato"].map(
-                (item) => (
-                  <button
-                    key={item}
-                    onClick={() =>
-                      scrollToSection(item.toLowerCase().replace("-", ""))
-                    }
-                    className="text-white hover:text-cyan-400 transition-colors duration-300"
-                  >
-                    {item}
-                  </button>
-                )
-              )}
+              {[
+                "Home",
+                "Line-up",
+                "Artistas",
+                "Ingressos",
+                "Local",
+                "Contato",
+              ].map((item) => (
+                <button
+                  key={item}
+                  onClick={() =>
+                    scrollToSection(item.toLowerCase().replace("-", ""))
+                  }
+                  className="text-white hover:text-cyan-400 transition-colors duration-300"
+                >
+                  {item}
+                </button>
+              ))}
             </div>
 
             <GlassButton variant="accent" size="sm">
@@ -73,20 +80,20 @@ export default function Home() {
         id="home"
         className="min-h-screen flex items-center justify-center relative pt-20 hero-bg"
       >
-        <div className="vinyl-record"></div>
+        <VinylRecord delay={2.5} />
         <div className="container mx-auto px-6 text-center hero-content">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <h1 className="text-6xl md:text-8xl font-bold mb-6 text-glow-blue">
+            <h1 className="text-6xl md:text-8xl font-bold mb-6 text-glow-blue font-advent">
               BOREAL
             </h1>
-            <h2 className="text-3xl md:text-5xl font-light mb-4 text-glow-purple">
+            <h2 className="text-3xl md:text-5xl font-light mb-4 text-glow-purple font-advent">
               CLUB
             </h2>
-            <p className="text-xl md:text-2xl mb-8 text-cyan-300">
+            <p className="text-xl md:text-2xl mb-8 text-cyan-300 font-advent">
               PARADISE EDITION
             </p>
 
@@ -128,10 +135,10 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 1.5 }}
             >
-              <GlassButton variant="accent" size="lg" glow>
+              <GlassButton className="mb-5" variant="accent" size="lg" glow>
                 Comprar Ingressos
               </GlassButton>
-              <GlassButton variant="neon" size="lg">
+              <GlassButton className="mb-5" variant="neon" size="lg">
                 Ver Line-up
               </GlassButton>
             </motion.div>
@@ -194,6 +201,98 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Artistas da Casa Section */}
+      <section id="artistas" className="py-20 relative">
+        <div className="container mx-auto px-6">
+          <motion.h2
+            className="text-4xl md:text-6xl font-bold text-center mb-16 text-glow-cyan"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            ARTISTAS DA CASA
+          </motion.h2>
+
+          <motion.p
+            className="text-xl text-center mb-12 text-gray-300 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Conheça os talentos que fazem do Boreal Club a experiência mais
+            imersiva de música eletrônica do Brasil
+          </motion.p>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {[
+              {
+                id: "dj-aurora",
+                name: "DJ AURORA",
+                genre: "Progressive House",
+                bio: "Pioneira do Progressive House no Brasil, conhecida por suas transições suaves e atmosferas mágicas.",
+                featured: true,
+              },
+              {
+                id: "neon-beats",
+                name: "NEON BEATS",
+                genre: "Techno",
+                bio: "Mestre do Techno brasileiro, combina batidas pulsantes com elementos futuristas.",
+                featured: true,
+              },
+              {
+                id: "cyber-wave",
+                name: "CYBER WAVE",
+                genre: "Synthwave",
+                bio: "A rainha do Synthwave nacional, traz o melhor dos anos 80 com roupagem moderna.",
+                featured: true,
+              },
+            ].map((artist, index) => (
+              <motion.div
+                key={artist.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -10 }}
+              >
+                <Link href={`/artistas/${artist.id}`}>
+                  <GlassCard
+                    className="p-6 text-center cursor-pointer group"
+                    glow
+                  >
+                    <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 flex items-center justify-center overflow-hidden">
+                      <Music className="w-12 h-12 text-white" />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-2 text-glow-cyan group-hover:text-cyan-300 transition-colors">
+                      {artist.name}
+                    </h3>
+                    <p className="text-purple-300 mb-2">{artist.genre}</p>
+                    <p className="text-sm text-gray-400 mb-4 line-clamp-3">
+                      {artist.bio}
+                    </p>
+                    <div className="text-cyan-400 text-sm font-medium">
+                      Ver Perfil →
+                    </div>
+                  </GlassCard>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div
+            className="text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <Link href="/artistas">
+              <GlassButton variant="accent" size="lg" glow>
+                Ver Todos os Artistas
+              </GlassButton>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Tickets Section - Single Ticket */}
       <section id="ingressos" className="py-20 relative">
         <div className="container mx-auto px-6">
@@ -212,7 +311,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <GlassCard className="p-8 text-center neon-purple" glow>
+              <GlassCard className="p-8 text-center" glow>
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-purple-500 to-cyan-500 text-white px-6 py-2 rounded-full text-sm font-bold">
                   PARADISE EDITION
                 </div>

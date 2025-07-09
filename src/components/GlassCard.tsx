@@ -29,7 +29,7 @@ const GlassCard = forwardRef<HTMLDivElement, GlassCardProps>(
     };
 
     const hoverClasses = hover ? "hover-glow hover:scale-[1.02]" : "";
-    const glowClasses = glow ? "neon-blue" : "";
+    const glowClasses = glow ? "glow-reduced" : "";
 
     const classes = `${baseClasses} ${variants[variant]} ${hoverClasses} ${glowClasses} ${className}`;
 

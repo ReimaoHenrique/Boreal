@@ -38,14 +38,7 @@ const GlassButton = forwardRef<HTMLButtonElement, GlassButtonProps>(
       xl: "px-10 py-5 text-xl",
     };
 
-    const glowClasses = glow
-      ? {
-          primary: "neon-blue",
-          secondary: "neon-purple",
-          accent: "neon-cyan",
-          neon: "neon-cyan",
-        }[variant]
-      : "";
+    const glowClasses = glow ? "glow-reduced" : "";
 
     const classes = `${baseClasses} ${variants[variant]} ${sizes[size]} ${glowClasses} ${className}`;
 
