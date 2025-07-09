@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import GlassCard from "@/components/GlassCard";
-
+import Image from "next/image";
 interface EventCardProps {
   name: string;
   date: string;
@@ -29,7 +29,14 @@ export default function EventCard({
     <GlassCard className="p-6 text-center cursor-pointer group" glow>
       <div className="w-full h-48 mb-6 rounded-lg overflow-hidden">
         {image ? (
-          <img src={image} alt={name} className="w-full h-full object-cover" />
+          <Image
+            src={image}
+            alt={name}
+            className="w-full h-full object-cover"
+            width={400}
+            height={300}
+            priority={index < 2}
+          />
         ) : (
           <div className="w-full h-full bg-gradient-to-br from-cyan-900/30 to-purple-900/30 flex items-center justify-center">
             <div className="text-center">

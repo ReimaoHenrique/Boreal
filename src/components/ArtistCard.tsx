@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Music } from "lucide-react";
 import GlassCard from "@/components/GlassCard";
-
+import Image from "next/image";
 interface ArtistCardProps {
   id: string;
   name: string;
@@ -17,12 +17,10 @@ interface ArtistCardProps {
 }
 
 export default function ArtistCard({
-  id,
   name,
   genre,
   bio,
   image,
-  featured = false,
   index = 0,
   href,
 }: ArtistCardProps) {
@@ -30,10 +28,13 @@ export default function ArtistCard({
     <GlassCard className="p-6 text-center cursor-pointer group" glow>
       <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 flex items-center justify-center overflow-hidden">
         {image ? (
-          <img
+          <Image
             src={image}
             alt={`Foto de ${name}`}
             className="w-full h-full object-cover rounded-full"
+            width={128}
+            height={128}
+            priority={index < 2}
           />
         ) : (
           <Music className="w-12 h-12 text-white" />

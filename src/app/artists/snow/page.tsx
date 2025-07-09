@@ -1,11 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Music, Instagram, Youtube, ExternalLink, Play } from "lucide-react";
+import { Music, ExternalLink, Play, Instagram } from "lucide-react";
 import GlassCard from "@/components/GlassCard";
 import ParticleBackground from "@/components/ParticleBackground";
 import ShareButtons from "@/components/ShareButtons";
-import EventInfo from "@/components/EventInfo";
 
 // Dados do DJ Aurora
 const artist = {
@@ -140,7 +139,7 @@ export default function DJAuroraPage() {
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-red-400 transition-colors"
                 >
-                  <Youtube className="w-6 h-6" />
+                  <Play className="w-6 h-6" />
                 </a>
                 <a
                   href={artist.soundcloud}

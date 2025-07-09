@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Music, Ticket, Instagram, Facebook, Twitter } from "lucide-react";
 import GlassButton from "@/components/GlassButton";
 import ParticleBackground from "@/components/ParticleBackground";
 import CountdownTimer from "@/components/CountdownTimer";

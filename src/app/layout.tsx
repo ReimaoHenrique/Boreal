@@ -1,5 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: "Boreal Crew - Paradise Edition",
@@ -26,7 +31,6 @@ export const metadata: Metadata = {
     title: "Boreal Crew - Paradise Edition",
     description: "A experiência mais imersiva de música eletrônica do Brasil.",
   },
-  viewport: "width=device-width, initial-scale=1",
   robots: "index, follow",
 };
 

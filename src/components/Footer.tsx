@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Instagram, Facebook, Twitter, Mail, Phone } from "lucide-react";
 import GlassCard from "@/components/GlassCard";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -118,10 +119,12 @@ export default function Footer() {
                   whileHover={{ scale: 1.05 }}
                 >
                   <div className="w-10 h-8 flex items-center justify-center">
-                    <img
+                    <Image
                       src="/assets/datasynk.svg"
                       alt="Datasynk Logo"
                       className="w-full h-full object-contain"
+                      width={40}
+                      height={32}
                     />
                   </div>
                   <span className="text-shadow-cyan-800 font-semibold">

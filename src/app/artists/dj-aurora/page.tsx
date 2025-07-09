@@ -1,11 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Music, Instagram, Youtube, ExternalLink, Play } from "lucide-react";
+import { Music, ExternalLink, Play, Instagram } from "lucide-react";
 import GlassCard from "@/components/GlassCard";
 import ParticleBackground from "@/components/ParticleBackground";
 import ShareButtons from "@/components/ShareButtons";
-import EventInfo from "@/components/EventInfo";
 
 // Dados do DJ Aurora
 const artist = {
@@ -14,7 +13,7 @@ const artist = {
   realName: "Aurora Silva",
   genre: "Progressive House",
   bio: "Pioneira do Progressive House no Brasil, DJ Aurora é conhecida por suas transições suaves e atmosferas mágicas que transportam o público para dimensões sonoras únicas. Com mais de 10 anos de experiência, ela já se apresentou nos principais clubes e festivais do país, sempre levando sua marca registrada de melodias envolventes e grooves hipnóticos.",
-  longBio: `Nascida em São Paulo, Aurora Silva descobriu sua paixão pela música eletrônica ainda na adolescência. Influenciada por artistas como Sasha, John Digweed e Hernan Cattaneo, ela desenvolveu um estilo único que combina a sofisticação do Progressive House com elementos da música brasileira.
+  longBio: `Nascida em São Paulo, Aurora Silva descobclearriu sua paixão pela música eletrônica ainda na adolescência. Influenciada por artistas como Sasha, John Digweed e Hernan Cattaneo, ela desenvolveu um estilo único que combina a sofisticação do Progressive House com elementos da música brasileira.
 
 Sua jornada profissional começou em 2013, quando começou a se apresentar em pequenos clubes da capital paulista. Rapidamente, seu talento foi reconhecido e ela passou a integrar as principais casas noturnas do Brasil.
 
@@ -140,7 +139,7 @@ export default function DJAuroraPage() {
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-red-400 transition-colors"
                 >
-                  <Youtube className="w-6 h-6" />
+                  <Play className="w-6 h-6" />
                 </a>
                 <a
                   href={artist.soundcloud}

@@ -13,7 +13,6 @@ import ArtistCard from "@/components/ArtistCard";
 
 export default function Home() {
   // Data do evento - 20 de Setembro, 2025 às 20:00
-  const eventDate = new Date("2025-09-20T20:00:00-03:00");
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
