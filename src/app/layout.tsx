@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "boreal crew",
     "paradise edition",
     "copacabana",
-    "rio de janeiro",
+    "Salvador Bahia",
   ],
   authors: [{ name: "Boreal Crew" }],
   openGraph: {

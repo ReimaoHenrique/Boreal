@@ -2,9 +2,6 @@
 
 import { motion } from "framer-motion";
 import {
-  Calendar,
-  MapPin,
-  Users,
   Music,
   Instagram,
   Facebook,
@@ -12,7 +9,6 @@ import {
   Play,
   Heart,
   Share2,
-  Clock,
   Star,
   Sparkles,
 } from "lucide-react";
@@ -20,6 +16,7 @@ import GlassCard from "@/components/GlassCard";
 import GlassButton from "@/components/GlassButton";
 import ParticleBackground from "@/components/ParticleBackground";
 import ShareButtons from "@/components/ShareButtons";
+import EventInfo from "@/components/EventInfo";
 
 // Dados do evento Mystic Edition
 const event = {
@@ -135,36 +132,13 @@ export default function MysticEditionPage() {
               {event.description}
             </p>
 
-            <div className="grid md:grid-cols-4 gap-6 mb-12 max-w-4xl mx-auto">
-              <div className="text-center">
-                <Calendar className="w-8 h-8 mx-auto mb-2 text-cyan-400" />
-                <div className="text-lg font-bold text-glow-cyan">
-                  {event.date}
-                </div>
-                <div className="text-sm text-gray-400">Data</div>
-              </div>
-              <div className="text-center">
-                <Clock className="w-8 h-8 mx-auto mb-2 text-purple-400" />
-                <div className="text-lg font-bold text-glow-purple">
-                  {event.time}
-                </div>
-                <div className="text-sm text-gray-400">Horário</div>
-              </div>
-              <div className="text-center">
-                <MapPin className="w-8 h-8 mx-auto mb-2 text-cyan-400" />
-                <div className="text-lg font-bold text-glow-cyan">
-                  {event.venue}
-                </div>
-                <div className="text-sm text-gray-400">Local</div>
-              </div>
-              <div className="text-center">
-                <Users className="w-8 h-8 mx-auto mb-2 text-purple-400" />
-                <div className="text-lg font-bold text-glow-purple">
-                  {event.capacity}
-                </div>
-                <div className="text-sm text-gray-400">Capacidade</div>
-              </div>
-            </div>
+            <EventInfo
+              date={event.date}
+              time={event.time}
+              venue={event.venue}
+              capacity={event.capacity}
+              showAnimation={false}
+            />
 
             <motion.div
               className="flex flex-col sm:flex-row gap-4 justify-center"

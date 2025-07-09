@@ -2,22 +2,14 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import {
-  Calendar,
-  MapPin,
-  Music,
-  Users,
-  Ticket,
-  Instagram,
-  Facebook,
-  Twitter,
-  Clock,
-} from "lucide-react";
+import { Music, Ticket, Instagram, Facebook, Twitter } from "lucide-react";
 import GlassButton from "@/components/GlassButton";
 import GlassCard from "@/components/GlassCard";
 import ParticleBackground from "@/components/ParticleBackground";
-import CountdownTimer from "@/components/CountdownTimer";
-import VinylRecord from "@/components/VinylRecord";
+import HeroAurora from "@/components/HeroAurora";
+import EventInfo from "@/components/EventInfo";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   // Data do evento - 20 de Setembro, 2025 às 20:00
@@ -33,153 +25,10 @@ export default function Home() {
       <ParticleBackground particleCount={30} />
 
       {/* Navigation */}
-      <motion.nav
-        className="fixed top-0 left-0 right-0 z-50 glass-strong"
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <motion.div
-              className="text-2xl font-bold text-glow-cyan"
-              whileHover={{ scale: 1.05 }}
-            >
-              BOREAL
-            </motion.div>
-
-            <div className="hidden md:flex space-x-8">
-              {[
-                "Home",
-                "Eventos",
-                "Artistas",
-                "Ingressos",
-                "Local",
-                "Contato",
-              ].map((item) => (
-                <button
-                  key={item}
-                  onClick={() =>
-                    scrollToSection(
-                      item.toLowerCase().replace("-", "").replace(" ", "-")
-                    )
-                  }
-                  className="text-white hover:text-cyan-400 transition-colors duration-300"
-                >
-                  {item}
-                </button>
-              ))}
-            </div>
-
-            <GlassButton variant="accent" size="sm">
-              Comprar Ingresso
-            </GlassButton>
-          </div>
-        </div>
-      </motion.nav>
+      <Header onScrollToSection={scrollToSection} />
 
       {/* Hero Section */}
-      <section
-        id="home"
-        className="min-h-screen flex items-center justify-center relative pt-20 hero-bg"
-      >
-        <VinylRecord delay={2.5} />
-        <div className="container mx-auto px-6 text-center hero-content">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-          >
-            <div className="mb-8">
-              <span className="inline-block px-6 py-2 bg-gradient-to-r from-purple-500 to-cyan-500 text-white rounded-full text-sm font-bold mb-4">
-                PRÓXIMO EVENTO
-              </span>
-            </div>
-
-            <h1 className="text-6xl md:text-8xl font-bold mb-6 text-glow-blue font-advent">
-              BOREAL
-            </h1>
-            <h2 className="text-3xl md:text-5xl font-light mb-4 text-glow-purple font-advent">
-              CLUB
-            </h2>
-            <p className="text-xl md:text-2xl mb-8 text-cyan-300 font-advent">
-              MYSTIC EDITION
-            </p>
-
-            <p className="text-lg md:text-xl mb-12 text-cyan-300 max-w-3xl mx-auto">
-              Uma jornada mística através da música eletrônica. O Boreal Crew
-              apresenta Mystic Edition, uma experiência transcendental com os
-              melhores DJs da cena nacional em um ambiente místico e envolvente.
-            </p>
-
-            <motion.div
-              className="grid md:grid-cols-4 gap-6 mb-12 max-w-4xl mx-auto"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.8 }}
-            >
-              <div className="text-center">
-                <Calendar className="w-8 h-8 mx-auto mb-2 text-cyan-400" />
-                <div className="text-lg font-bold text-glow-cyan">
-                  20 de Setembro, 2025
-                </div>
-                <div className="text-sm text-gray-400">Data</div>
-              </div>
-              <div className="text-center">
-                <Clock className="w-8 h-8 mx-auto mb-2 text-purple-400" />
-                <div className="text-lg font-bold text-glow-purple">
-                  20:00 - 06:00
-                </div>
-                <div className="text-sm text-gray-400">Horário</div>
-              </div>
-              <div className="text-center">
-                <MapPin className="w-8 h-8 mx-auto mb-2 text-cyan-400" />
-                <div className="text-lg font-bold text-glow-cyan">
-                  Paradise Beach Club
-                </div>
-                <div className="text-sm text-gray-400">Local</div>
-              </div>
-              <div className="text-center">
-                <Users className="w-8 h-8 mx-auto mb-2 text-purple-400" />
-                <div className="text-lg font-bold text-glow-purple">4.000</div>
-                <div className="text-sm text-gray-400">Capacidade</div>
-              </div>
-            </motion.div>
-
-            {/* Contador Regressivo */}
-            <motion.div
-              className="mb-12"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 1.2 }}
-            >
-              <CountdownTimer
-                targetDate={eventDate}
-                eventName="BOREAL CREW - MYSTIC EDITION"
-                promoText="EARLY BIRD - ÚLTIMOS DIAS"
-                originalPrice={220}
-                promoPrice={180}
-              />
-            </motion.div>
-
-            <motion.div
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 1.5 }}
-            >
-              <Link href="/proximoevento/mysticedition">
-                <GlassButton className="mb-5" variant="accent" size="lg" glow>
-                  Ver Detalhes Completos
-                </GlassButton>
-              </Link>
-              <GlassButton className="mb-5" variant="neon" size="lg">
-                Comprar Ingressos
-              </GlassButton>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+      <HeroAurora />
 
       {/* Últimos Eventos Section */}
       <section id="eventos" className="py-20 relative">
@@ -257,7 +106,7 @@ export default function Home() {
                 >
                   <div className="w-full h-48 mb-6 rounded-lg bg-gradient-to-br from-cyan-900/30 to-purple-900/30 flex items-center justify-center overflow-hidden">
                     <div className="text-center">
-                      <Calendar className="w-12 h-12 mx-auto mb-4 text-cyan-400" />
+                      <span className="text-4xl">📅</span>
                       <p className="text-lg text-gray-300">Evento Passado</p>
                     </div>
                   </div>
@@ -266,15 +115,15 @@ export default function Home() {
                   </h3>
                   <div className="space-y-2 text-sm text-gray-300 mb-4">
                     <div className="flex items-center justify-center gap-2">
-                      <Calendar className="w-4 h-4 text-purple-400" />
+                      <span className="text-purple-400">📅</span>
                       <span>{event.date}</span>
                     </div>
                     <div className="flex items-center justify-center gap-2">
-                      <MapPin className="w-4 h-4 text-cyan-400" />
+                      <span className="text-cyan-400">📍</span>
                       <span>{event.location}</span>
                     </div>
                     <div className="flex items-center justify-center gap-2">
-                      <Users className="w-4 h-4 text-purple-400" />
+                      <span className="text-purple-400">👥</span>
                       <span>{event.attendees} pessoas</span>
                     </div>
                   </div>
@@ -392,73 +241,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Tickets Section - Single Ticket */}
-      <section id="ingressos" className="py-20 relative">
-        <div className="container mx-auto px-6">
-          <motion.h2
-            className="text-4xl md:text-6xl font-bold text-center mb-16 text-glow-blue"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            INGRESSOS
-          </motion.h2>
-
-          <div className="max-w-md mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <GlassCard className="p-8 text-center" glow>
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-purple-500 to-cyan-500 text-white px-6 py-2 rounded-full text-sm font-bold">
-                  PARADISE EDITION
-                </div>
-
-                <Ticket className="w-16 h-16 mx-auto mb-6 text-cyan-400" />
-                <h3 className="text-3xl font-bold mb-4 text-glow-cyan">
-                  BOREAL CREW
-                </h3>
-                <div className="text-5xl font-bold mb-8 text-glow-purple">
-                  R$ 150
-                </div>
-
-                <ul className="space-y-4 mb-8 text-left">
-                  <li className="flex items-center gap-3 text-gray-300">
-                    <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                    Entrada VIP até 00h
-                  </li>
-                  <li className="flex items-center gap-3 text-gray-300">
-                    <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
-                    Welcome Drink Premium
-                  </li>
-                  <li className="flex items-center gap-3 text-gray-300">
-                    <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                    Acesso a todas as áreas
-                  </li>
-                  <li className="flex items-center gap-3 text-gray-300">
-                    <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
-                    Brinde exclusivo Boreal
-                  </li>
-                  <li className="flex items-center gap-3 text-gray-300">
-                    <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                    Meet & Greet com DJs
-                  </li>
-                </ul>
-
-                <GlassButton
-                  variant="accent"
-                  className="w-full text-lg py-4"
-                  glow
-                >
-                  Comprar Agora
-                </GlassButton>
-              </GlassCard>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* Location Section */}
       <section id="local" className="py-20 relative">
         <div className="container mx-auto px-6">
@@ -483,13 +265,13 @@ export default function Home() {
                 </h3>
                 <div className="space-y-4 text-lg">
                   <div className="flex items-center gap-3">
-                    <MapPin className="w-6 h-6 text-cyan-400" />
+                    <span className="text-cyan-400">📍</span>
                     <span>
                       Av. Atlântica, 1500 - Copacabana, Rio de Janeiro
                     </span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <Users className="w-6 h-6 text-purple-400" />
+                    <span className="text-purple-400">👥</span>
                     <span>Capacidade para 2000 pessoas</span>
                   </div>
                 </div>
@@ -516,7 +298,7 @@ export default function Home() {
               <GlassCard className="p-4 h-96">
                 <div className="w-full h-full bg-gradient-to-br from-cyan-900/30 to-purple-900/30 rounded-lg flex items-center justify-center">
                   <div className="text-center">
-                    <MapPin className="w-16 h-16 mx-auto mb-4 text-cyan-400" />
+                    <span className="text-6xl">📍</span>
                     <p className="text-xl text-gray-300">Mapa Interativo</p>
                     <p className="text-sm text-gray-400 mt-2">
                       Clique para abrir no Google Maps
@@ -530,67 +312,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 relative">
-        <div className="container mx-auto px-6">
-          <GlassCard className="p-8">
-            <div className="grid md:grid-cols-3 gap-8 text-center md:text-left">
-              <div>
-                <h3 className="text-2xl font-bold mb-4 text-glow-cyan">
-                  BOREAL CREW
-                </h3>
-                <p className="text-gray-300">
-                  A experiência mais imersiva de música eletrônica do Brasil.
-                  Prepare-se para uma noite inesquecível.
-                </p>
-              </div>
-
-              <div>
-                <h4 className="text-lg font-bold mb-4 text-purple-300">
-                  Contato
-                </h4>
-                <div className="space-y-2 text-gray-300">
-                  <p>contato@borealclub.com</p>
-                  <p>+55 (21) 99999-9999</p>
-                  <p>WhatsApp: +55 (21) 88888-8888</p>
-                </div>
-              </div>
-
-              <div>
-                <h4 className="text-lg font-bold mb-4 text-cyan-300">
-                  Redes Sociais
-                </h4>
-                <div className="flex justify-center md:justify-start space-x-4">
-                  <motion.a
-                    href="#"
-                    className="text-gray-300 hover:text-cyan-400 transition-colors"
-                    whileHover={{ scale: 1.2 }}
-                  >
-                    <Instagram className="w-6 h-6" />
-                  </motion.a>
-                  <motion.a
-                    href="#"
-                    className="text-gray-300 hover:text-purple-400 transition-colors"
-                    whileHover={{ scale: 1.2 }}
-                  >
-                    <Facebook className="w-6 h-6" />
-                  </motion.a>
-                  <motion.a
-                    href="#"
-                    className="text-gray-300 hover:text-blue-400 transition-colors"
-                    whileHover={{ scale: 1.2 }}
-                  >
-                    <Twitter className="w-6 h-6" />
-                  </motion.a>
-                </div>
-              </div>
-            </div>
-
-            <div className="border-t border-white/10 mt-8 pt-8 text-center text-gray-400">
-              <p>&copy; 2025 Boreal Crew. Todos os direitos reservados.</p>
-            </div>
-          </GlassCard>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

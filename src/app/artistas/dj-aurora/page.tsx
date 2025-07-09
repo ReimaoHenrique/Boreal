@@ -1,19 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Music,
-  Instagram,
-  Youtube,
-  ExternalLink,
-  Calendar,
-  MapPin,
-  Users,
-  Play,
-} from "lucide-react";
+import { Music, Instagram, Youtube, ExternalLink, Play } from "lucide-react";
 import GlassCard from "@/components/GlassCard";
 import ParticleBackground from "@/components/ParticleBackground";
 import ShareButtons from "@/components/ShareButtons";
+import EventInfo from "@/components/EventInfo";
 
 // Dados do DJ Aurora
 const artist = {
@@ -184,7 +176,7 @@ export default function DJAuroraPage() {
                 </h3>
                 <div className="space-y-3 text-left">
                   <div className="flex items-center gap-3">
-                    <Calendar className="w-5 h-5 text-cyan-400" />
+                    <span className="text-cyan-400">📅</span>
                     <span>{artist.nextShow.date}</span>
                   </div>
                   <div className="flex items-center gap-3">
@@ -192,11 +184,11 @@ export default function DJAuroraPage() {
                     <span>{artist.nextShow.time}</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <MapPin className="w-5 h-5 text-cyan-400" />
+                    <span className="text-cyan-400">📍</span>
                     <span>{artist.nextShow.venue}</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <Users className="w-5 h-5 text-purple-400" />
+                    <span className="text-purple-400">👥</span>
                     <span>{artist.nextShow.location}</span>
                   </div>
                 </div>

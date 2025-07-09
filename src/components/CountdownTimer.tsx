@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Clock, Ticket, Zap } from "lucide-react";
+import Link from "next/link";
 import GlassCard from "./GlassCard";
 import GlassButton from "./GlassButton";
 
@@ -171,15 +172,22 @@ export default function CountdownTimer({
 
         {/* Call to action */}
         <div className="text-center">
-          <GlassButton
-            variant="accent"
-            size="lg"
-            className="w-full text-lg py-4 mb-3"
-            glow
+          <Link
+            href="https://www.sympla.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cursor-pointer"
           >
-            <Ticket className="w-5 h-5 mr-2" />
-            Garantir Ingresso Promocional
-          </GlassButton>
+            <GlassButton
+              variant="accent"
+              size="lg"
+              className="w-full text-lg py-4 mb-3 flex items-center justify-center"
+              glow
+            >
+              <Ticket className="w-5 h-5 mr-2" />
+              Garantir Ingresso Promocional
+            </GlassButton>
+          </Link>
 
           <p className="text-xs text-gray-400">
             ⚡ Oferta válida apenas durante a contagem regressiva
