@@ -2,14 +2,14 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Music, Ticket, Instagram, Facebook, Twitter } from "lucide-react";
 import GlassButton from "@/components/GlassButton";
 import GlassCard from "@/components/GlassCard";
 import ParticleBackground from "@/components/ParticleBackground";
 import HeroAurora from "@/components/HeroAurora";
-import EventInfo from "@/components/EventInfo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import EventCard from "@/components/EventCard";
+import ArtistCard from "@/components/ArtistCard";
 
 export default function Home() {
   // Data do evento - 20 de Setembro, 2025 às 20:00
@@ -43,97 +43,17 @@ export default function Home() {
           </motion.h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                name: "BOREAL CREW - WINTER EDITION",
-                date: "15 de Dezembro, 2024",
-                location: "Paradise Beach Club",
-                attendees: "2.500+",
-                highlights: "DJ Aurora, Neon Beats, Cyber Wave",
-                image: "/assets/events/winter-edition.jpg",
-              },
-              {
-                name: "BOREAL CREW - SUMMER VIBES",
-                date: "20 de Janeiro, 2025",
-                location: "Paradise Beach Club",
-                attendees: "3.000+",
-                highlights: "Electric Soul, Digital Dreams, Bass Galaxy",
-                image: "/assets/events/summer-vibes.jpg",
-              },
-              {
-                name: "BOREAL CREW - NEON NIGHT",
-                date: "10 de Março, 2025",
-                location: "Paradise Beach Club",
-                attendees: "2.800+",
-                highlights: "Cyber Wave, Neon Beats, DJ Aurora",
-                image: "/assets/events/neon-night.jpg",
-              },
-              {
-                name: "BOREAL CREW - DEEP HOUSE SESSION",
-                date: "25 de Abril, 2025",
-                location: "Paradise Beach Club",
-                attendees: "2.200+",
-                highlights: "Electric Soul, Digital Dreams",
-                image: "/assets/events/deep-house.jpg",
-              },
-              {
-                name: "BOREAL CREW - TRANCE EXPERIENCE",
-                date: "5 de Maio, 2025",
-                location: "Paradise Beach Club",
-                attendees: "2.600+",
-                highlights: "Digital Dreams, DJ Aurora",
-                image: "/assets/events/trance-exp.jpg",
-              },
-              {
-                name: "BOREAL CREW - BASS NIGHT",
-                date: "15 de Junho, 2025",
-                location: "Paradise Beach Club",
-                attendees: "2.900+",
-                highlights: "Bass Galaxy, Neon Beats, Cyber Wave",
-                image: "/assets/events/bass-night.jpg",
-              },
-            ].map((event, index) => (
-              <motion.div
-                key={event.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-              >
-                <GlassCard
-                  className="p-6 text-center cursor-pointer group"
-                  glow
-                >
-                  <div className="w-full h-48 mb-6 rounded-lg bg-gradient-to-br from-cyan-900/30 to-purple-900/30 flex items-center justify-center overflow-hidden">
-                    <div className="text-center">
-                      <span className="text-4xl">📅</span>
-                      <p className="text-lg text-gray-300">Evento Passado</p>
-                    </div>
-                  </div>
-                  <h3 className="text-xl font-bold mb-3 text-glow-cyan group-hover:text-cyan-300 transition-colors">
-                    {event.name}
-                  </h3>
-                  <div className="space-y-2 text-sm text-gray-300 mb-4">
-                    <div className="flex items-center justify-center gap-2">
-                      <span className="text-purple-400">📅</span>
-                      <span>{event.date}</span>
-                    </div>
-                    <div className="flex items-center justify-center gap-2">
-                      <span className="text-cyan-400">📍</span>
-                      <span>{event.location}</span>
-                    </div>
-                    <div className="flex items-center justify-center gap-2">
-                      <span className="text-purple-400">👥</span>
-                      <span>{event.attendees} pessoas</span>
-                    </div>
-                  </div>
-                  <div className="text-xs text-gray-400 border-t border-white/10 pt-3">
-                    <p className="font-medium text-cyan-300 mb-1">Destaques:</p>
-                    <p>{event.highlights}</p>
-                  </div>
-                </GlassCard>
-              </motion.div>
-            ))}
+            <EventCard
+              key="paradiseedition"
+              name="BOREAL CREW - Paradise Edition"
+              date="5 de Julho, 2025"
+              location="Paradise Beach Club"
+              attendees="1783+"
+              destaques="DJ now, Neon Beats, Cyber Wave"
+              image="/assets/events/boreal.jpg"
+              index={0}
+              href="/ultimoseventos/paradiseedition"
+            />
           </div>
 
           <motion.div
@@ -172,58 +92,27 @@ export default function Home() {
           </motion.p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {[
-              {
-                id: "dj-aurora",
-                name: "DJ AURORA",
-                genre: "Progressive House",
-                bio: "Pioneira do Progressive House no Brasil, conhecida por suas transições suaves e atmosferas mágicas.",
-                featured: true,
-              },
-              {
-                id: "neon-beats",
-                name: "NEON BEATS",
-                genre: "Techno",
-                bio: "Mestre do Techno brasileiro, combina batidas pulsantes com elementos futuristas.",
-                featured: true,
-              },
-              {
-                id: "cyber-wave",
-                name: "CYBER WAVE",
-                genre: "Synthwave",
-                bio: "A rainha do Synthwave nacional, traz o melhor dos anos 80 com roupagem moderna.",
-                featured: true,
-              },
-            ].map((artist, index) => (
-              <motion.div
-                key={artist.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-              >
-                <Link href={`/artistas/${artist.id}`}>
-                  <GlassCard
-                    className="p-6 text-center cursor-pointer group"
-                    glow
-                  >
-                    <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 flex items-center justify-center overflow-hidden">
-                      <Music className="w-12 h-12 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-bold mb-2 text-glow-cyan group-hover:text-cyan-300 transition-colors">
-                      {artist.name}
-                    </h3>
-                    <p className="text-purple-300 mb-2">{artist.genre}</p>
-                    <p className="text-sm text-gray-400 mb-4 line-clamp-3">
-                      {artist.bio}
-                    </p>
-                    <div className="text-cyan-400 text-sm font-medium">
-                      Ver Perfil →
-                    </div>
-                  </GlassCard>
-                </Link>
-              </motion.div>
-            ))}
+            <ArtistCard
+              key="dj-aurora"
+              id="dj-aurora"
+              name="DJ AURORA"
+              genre="Progressive House"
+              bio="Pioneira do Progressive House no Brasil, conhecida por suas transições suaves e atmosferas mágicas."
+              featured={false}
+              index={0}
+              href="/artists/dj-aurora"
+            />
+            <ArtistCard
+              key="dj-snow"
+              id="dj-snow"
+              name="dj-snow"
+              genre="Farofa"
+              bio="Mestre do estilo Farofa brasileiro, combina batidas pulsantes com elementos normais."
+              image="/assets/artists/snow.jpeg"
+              featured={true}
+              index={1}
+              href="/artists/snow"
+            />
           </div>
 
           <motion.div

@@ -1,17 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Music,
-  Instagram,
-  Facebook,
-  Twitter,
-  Play,
-  Heart,
-  Share2,
-  Star,
-  Sparkles,
-} from "lucide-react";
+import { Music, Sparkles } from "lucide-react";
 import GlassCard from "@/components/GlassCard";
 import GlassButton from "@/components/GlassButton";
 import ParticleBackground from "@/components/ParticleBackground";
