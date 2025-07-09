@@ -2,37 +2,37 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    default: "Artistas - Boreal Club",
-    template: "%s | Boreal Club",
+    default: "Artistas - Boreal Crew",
+    template: "%s | Boreal Crew",
   },
   description:
-    "Conheça os talentos que fazem do Boreal Club a experiência mais imersiva de música eletrônica do Brasil.",
+    "Conheça os talentos que fazem do Boreal Crew a experiência mais imersiva de música eletrônica do Brasil.",
   keywords:
-    "artistas, DJs, música eletrônica, Boreal Club, Brasil, Progressive House, Techno, Synthwave",
-  authors: [{ name: "Boreal Club" }],
-  creator: "Boreal Club",
-  publisher: "Boreal Club",
+    "artistas, DJs, música eletrônica, Boreal Crew, Brasil, Progressive House, Techno, Synthwave",
+  authors: [{ name: "Boreal Crew" }],
+  creator: "Boreal Crew",
+  publisher: "Boreal Crew",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://borealclub.com"),
+  metadataBase: new URL("https://borealcrew.com"),
   alternates: {
     canonical: "/artistas",
   },
   openGraph: {
-    title: "Artistas - Boreal Club",
+    title: "Artistas - Boreal Crew",
     description:
-      "Conheça os talentos que fazem do Boreal Club a experiência mais imersiva de música eletrônica do Brasil.",
-    url: "https://borealclub.com/artistas",
-    siteName: "Boreal Club",
+      "Conheça os talentos que fazem do Boreal Crew a experiência mais imersiva de música eletrônica do Brasil.",
+    url: "https://borealcrew.com/artistas",
+    siteName: "Boreal Crew",
     images: [
       {
         url: "/assets/artists-og.jpg",
         width: 1200,
         height: 630,
-        alt: "Artistas - Boreal Club",
+        alt: "Artistas - Boreal Crew",
       },
     ],
     locale: "pt_BR",
@@ -40,11 +40,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Artistas - Boreal Club",
+    title: "Artistas - Boreal Crew",
     description:
-      "Conheça os talentos que fazem do Boreal Club a experiência mais imersiva de música eletrônica do Brasil.",
+      "Conheça os talentos que fazem do Boreal Crew a experiência mais imersiva de música eletrônica do Brasil.",
     images: ["/assets/artists-og.jpg"],
-    creator: "@borealclub",
+    creator: "@borealcrew",
   },
   other: {
     "theme-color": "#0ea5e9",

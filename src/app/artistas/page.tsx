@@ -108,7 +108,7 @@ export default function ArtistasPage() {
               DA CASA
             </h2>
             <p className="text-xl md:text-2xl mb-12 text-cyan-300 max-w-3xl mx-auto">
-              Conheça os talentos que fazem do Boreal Club a experiência mais
+              Conheça os talentos que fazem do Boreal Crew a experiência mais
               imersiva de música eletrônica do Brasil
             </p>
           </motion.div>

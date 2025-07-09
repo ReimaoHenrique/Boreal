@@ -23,7 +23,7 @@ interface CountdownTimerProps {
 
 export default function CountdownTimer({
   targetDate,
-  eventName = "BOREAL CLUB",
+  eventName = "BOREAL CREW",
   promoText = "OFERTA LIMITADA",
   originalPrice = 200,
   promoPrice = 150,

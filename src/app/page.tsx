@@ -11,6 +11,7 @@ import {
   Instagram,
   Facebook,
   Twitter,
+  Clock,
 } from "lucide-react";
 import GlassButton from "@/components/GlassButton";
 import GlassCard from "@/components/GlassCard";
@@ -19,8 +20,8 @@ import CountdownTimer from "@/components/CountdownTimer";
 import VinylRecord from "@/components/VinylRecord";
 
 export default function Home() {
-  // Data do evento - 15 de Agosto, 2025 às 19:00
-  const eventDate = new Date("2025-08-15T19:00:00-03:00");
+  // Data do evento - 20 de Setembro, 2025 às 20:00
+  const eventDate = new Date("2025-09-20T20:00:00-03:00");
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -50,7 +51,7 @@ export default function Home() {
             <div className="hidden md:flex space-x-8">
               {[
                 "Home",
-                "Line-up",
+                "Eventos",
                 "Artistas",
                 "Ingressos",
                 "Local",
@@ -59,7 +60,9 @@ export default function Home() {
                 <button
                   key={item}
                   onClick={() =>
-                    scrollToSection(item.toLowerCase().replace("-", ""))
+                    scrollToSection(
+                      item.toLowerCase().replace("-", "").replace(" ", "-")
+                    )
                   }
                   className="text-white hover:text-cyan-400 transition-colors duration-300"
                 >
@@ -87,6 +90,12 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
+            <div className="mb-8">
+              <span className="inline-block px-6 py-2 bg-gradient-to-r from-purple-500 to-cyan-500 text-white rounded-full text-sm font-bold mb-4">
+                PRÓXIMO EVENTO
+              </span>
+            </div>
+
             <h1 className="text-6xl md:text-8xl font-bold mb-6 text-glow-blue font-advent">
               BOREAL
             </h1>
@@ -94,22 +103,46 @@ export default function Home() {
               CLUB
             </h2>
             <p className="text-xl md:text-2xl mb-8 text-cyan-300 font-advent">
-              PARADISE EDITION
+              MYSTIC EDITION
+            </p>
+
+            <p className="text-lg md:text-xl mb-12 text-cyan-300 max-w-3xl mx-auto">
+              Uma jornada mística através da música eletrônica. O Boreal Crew
+              apresenta Mystic Edition, uma experiência transcendental com os
+              melhores DJs da cena nacional em um ambiente místico e envolvente.
             </p>
 
             <motion.div
-              className="flex flex-col md:flex-row gap-4 justify-center items-center mb-12"
+              className="grid md:grid-cols-4 gap-6 mb-12 max-w-4xl mx-auto"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.8 }}
             >
-              <div className="flex items-center gap-2 text-lg">
-                <Calendar className="w-5 h-5 text-cyan-400" />
-                <span>15 de Agosto, 2025</span>
+              <div className="text-center">
+                <Calendar className="w-8 h-8 mx-auto mb-2 text-cyan-400" />
+                <div className="text-lg font-bold text-glow-cyan">
+                  20 de Setembro, 2025
+                </div>
+                <div className="text-sm text-gray-400">Data</div>
               </div>
-              <div className="flex items-center gap-2 text-lg">
-                <MapPin className="w-5 h-5 text-purple-400" />
-                <span>Paradise Beach Club</span>
+              <div className="text-center">
+                <Clock className="w-8 h-8 mx-auto mb-2 text-purple-400" />
+                <div className="text-lg font-bold text-glow-purple">
+                  20:00 - 06:00
+                </div>
+                <div className="text-sm text-gray-400">Horário</div>
+              </div>
+              <div className="text-center">
+                <MapPin className="w-8 h-8 mx-auto mb-2 text-cyan-400" />
+                <div className="text-lg font-bold text-glow-cyan">
+                  Paradise Beach Club
+                </div>
+                <div className="text-sm text-gray-400">Local</div>
+              </div>
+              <div className="text-center">
+                <Users className="w-8 h-8 mx-auto mb-2 text-purple-400" />
+                <div className="text-lg font-bold text-glow-purple">4.000</div>
+                <div className="text-sm text-gray-400">Capacidade</div>
               </div>
             </motion.div>
 
@@ -122,10 +155,10 @@ export default function Home() {
             >
               <CountdownTimer
                 targetDate={eventDate}
-                eventName="BOREAL CLUB - PARADISE EDITION"
+                eventName="BOREAL CREW - MYSTIC EDITION"
                 promoText="EARLY BIRD - ÚLTIMOS DIAS"
-                originalPrice={200}
-                promoPrice={150}
+                originalPrice={220}
+                promoPrice={180}
               />
             </motion.div>
 
@@ -135,19 +168,21 @@ export default function Home() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 1.5 }}
             >
-              <GlassButton className="mb-5" variant="accent" size="lg" glow>
-                Comprar Ingressos
-              </GlassButton>
+              <Link href="/proximoevento/mysticedition">
+                <GlassButton className="mb-5" variant="accent" size="lg" glow>
+                  Ver Detalhes Completos
+                </GlassButton>
+              </Link>
               <GlassButton className="mb-5" variant="neon" size="lg">
-                Ver Line-up
+                Comprar Ingressos
               </GlassButton>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Line-up Section */}
-      <section id="lineup" className="py-20 relative">
+      {/* Últimos Eventos Section */}
+      <section id="eventos" className="py-20 relative">
         <div className="container mx-auto px-6">
           <motion.h2
             className="text-4xl md:text-6xl font-bold text-center mb-16 text-glow-purple"
@@ -155,49 +190,113 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            LINE-UP
+            ÚLTIMOS EVENTOS
           </motion.h2>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                name: "DJ AURORA",
-                genre: "Progressive House",
-                time: "23:00 - 01:00",
-              },
-              { name: "NEON BEATS", genre: "Techno", time: "01:00 - 03:00" },
-              { name: "CYBER WAVE", genre: "Synthwave", time: "03:00 - 05:00" },
-              {
-                name: "ELECTRIC SOUL",
-                genre: "Deep House",
-                time: "21:00 - 23:00",
+                name: "BOREAL CREW - WINTER EDITION",
+                date: "15 de Dezembro, 2024",
+                location: "Paradise Beach Club",
+                attendees: "2.500+",
+                highlights: "DJ Aurora, Neon Beats, Cyber Wave",
+                image: "/assets/events/winter-edition.jpg",
               },
               {
-                name: "DIGITAL DREAMS",
-                genre: "Trance",
-                time: "19:00 - 21:00",
+                name: "BOREAL CREW - SUMMER VIBES",
+                date: "20 de Janeiro, 2025",
+                location: "Paradise Beach Club",
+                attendees: "3.000+",
+                highlights: "Electric Soul, Digital Dreams, Bass Galaxy",
+                image: "/assets/events/summer-vibes.jpg",
               },
-              { name: "BASS GALAXY", genre: "Dubstep", time: "05:00 - 07:00" },
-            ].map((dj, index) => (
+              {
+                name: "BOREAL CREW - NEON NIGHT",
+                date: "10 de Março, 2025",
+                location: "Paradise Beach Club",
+                attendees: "2.800+",
+                highlights: "Cyber Wave, Neon Beats, DJ Aurora",
+                image: "/assets/events/neon-night.jpg",
+              },
+              {
+                name: "BOREAL CREW - DEEP HOUSE SESSION",
+                date: "25 de Abril, 2025",
+                location: "Paradise Beach Club",
+                attendees: "2.200+",
+                highlights: "Electric Soul, Digital Dreams",
+                image: "/assets/events/deep-house.jpg",
+              },
+              {
+                name: "BOREAL CREW - TRANCE EXPERIENCE",
+                date: "5 de Maio, 2025",
+                location: "Paradise Beach Club",
+                attendees: "2.600+",
+                highlights: "Digital Dreams, DJ Aurora",
+                image: "/assets/events/trance-exp.jpg",
+              },
+              {
+                name: "BOREAL CREW - BASS NIGHT",
+                date: "15 de Junho, 2025",
+                location: "Paradise Beach Club",
+                attendees: "2.900+",
+                highlights: "Bass Galaxy, Neon Beats, Cyber Wave",
+                image: "/assets/events/bass-night.jpg",
+              },
+            ].map((event, index) => (
               <motion.div
-                key={dj.name}
+                key={event.name}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -10 }}
               >
-                <GlassCard className="p-6 text-center">
-                  <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 flex items-center justify-center">
-                    <Music className="w-8 h-8 text-white" />
+                <GlassCard
+                  className="p-6 text-center cursor-pointer group"
+                  glow
+                >
+                  <div className="w-full h-48 mb-6 rounded-lg bg-gradient-to-br from-cyan-900/30 to-purple-900/30 flex items-center justify-center overflow-hidden">
+                    <div className="text-center">
+                      <Calendar className="w-12 h-12 mx-auto mb-4 text-cyan-400" />
+                      <p className="text-lg text-gray-300">Evento Passado</p>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold mb-2 text-glow-cyan">
-                    {dj.name}
+                  <h3 className="text-xl font-bold mb-3 text-glow-cyan group-hover:text-cyan-300 transition-colors">
+                    {event.name}
                   </h3>
-                  <p className="text-purple-300 mb-2">{dj.genre}</p>
-                  <p className="text-sm text-gray-400">{dj.time}</p>
+                  <div className="space-y-2 text-sm text-gray-300 mb-4">
+                    <div className="flex items-center justify-center gap-2">
+                      <Calendar className="w-4 h-4 text-purple-400" />
+                      <span>{event.date}</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2">
+                      <MapPin className="w-4 h-4 text-cyan-400" />
+                      <span>{event.location}</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2">
+                      <Users className="w-4 h-4 text-purple-400" />
+                      <span>{event.attendees} pessoas</span>
+                    </div>
+                  </div>
+                  <div className="text-xs text-gray-400 border-t border-white/10 pt-3">
+                    <p className="font-medium text-cyan-300 mb-1">Destaques:</p>
+                    <p>{event.highlights}</p>
+                  </div>
                 </GlassCard>
               </motion.div>
             ))}
           </div>
+
+          <motion.div
+            className="text-center mt-12"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <GlassButton variant="neon" size="lg">
+              Ver Galeria Completa
+            </GlassButton>
+          </motion.div>
         </div>
       </section>
 
@@ -219,7 +318,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Conheça os talentos que fazem do Boreal Club a experiência mais
+            Conheça os talentos que fazem do Boreal Crew a experiência mais
             imersiva de música eletrônica do Brasil
           </motion.p>
 
@@ -318,7 +417,7 @@ export default function Home() {
 
                 <Ticket className="w-16 h-16 mx-auto mb-6 text-cyan-400" />
                 <h3 className="text-3xl font-bold mb-4 text-glow-cyan">
-                  BOREAL CLUB
+                  BOREAL CREW
                 </h3>
                 <div className="text-5xl font-bold mb-8 text-glow-purple">
                   R$ 150
@@ -437,7 +536,7 @@ export default function Home() {
             <div className="grid md:grid-cols-3 gap-8 text-center md:text-left">
               <div>
                 <h3 className="text-2xl font-bold mb-4 text-glow-cyan">
-                  BOREAL CLUB
+                  BOREAL CREW
                 </h3>
                 <p className="text-gray-300">
                   A experiência mais imersiva de música eletrônica do Brasil.
@@ -487,7 +586,7 @@ export default function Home() {
             </div>
 
             <div className="border-t border-white/10 mt-8 pt-8 text-center text-gray-400">
-              <p>&copy; 2025 Boreal Club. Todos os direitos reservados.</p>
+              <p>&copy; 2025 Boreal Crew. Todos os direitos reservados.</p>
             </div>
           </GlassCard>
         </div>

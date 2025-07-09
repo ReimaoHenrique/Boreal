@@ -1,20 +1,20 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "DJ AURORA - Boreal Club | Progressive House",
+  title: "DJ AURORA - Boreal Crew | Progressive House",
   description:
-    "Pioneira do Progressive House no Brasil, DJ Aurora é conhecida por suas transições suaves e atmosferas mágicas que transportam o público para dimensões sonoras únicas. Confira sua performance no Boreal Club - Paradise Edition!",
+    "Pioneira do Progressive House no Brasil, DJ Aurora é conhecida por suas transições suaves e atmosferas mágicas que transportam o público para dimensões sonoras únicas. Confira sua performance no Boreal Crew - Paradise Edition!",
   keywords:
-    "DJ Aurora, Progressive House, Boreal Club, música eletrônica, Brasil, DJ brasileira",
-  authors: [{ name: "Boreal Club" }],
-  creator: "Boreal Club",
-  publisher: "Boreal Club",
+    "DJ Aurora, Progressive House, Boreal Crew, música eletrônica, Brasil, DJ brasileira",
+  authors: [{ name: "Boreal Crew" }],
+  creator: "Boreal Crew",
+  publisher: "Boreal Crew",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://borealclub.com"),
+  metadataBase: new URL("https://borealcrew.com"),
   alternates: {
     canonical: "/artistas/dj-aurora",
   },

@@ -239,7 +239,7 @@
     }
   }
 
-  /* Floating particles - Reduced */
+  /* Floating particles - Enhanced */
   .particles {
     position: absolute;
     width: 100%;
@@ -250,24 +250,41 @@
 
   .particle {
     position: absolute;
-    width: 1px;
-    height: 1px;
+    width: 2px;
+    height: 2px;
     background: var(--boreal-blue-300);
     border-radius: 50%;
-    animation: float 8s ease-in-out infinite;
-    opacity: 0.3;
+    animation: float 6s ease-in-out infinite;
+    opacity: 0.8;
+    box-shadow: 0 0 4px var(--boreal-blue-300);
   }
 
   .particle:nth-child(2n) {
     background: var(--boreal-purple-300);
-    animation-delay: -2s;
-    animation-duration: 10s;
+    animation-delay: -1s;
+    animation-duration: 8s;
+    box-shadow: 0 0 4px var(--boreal-purple-300);
   }
 
   .particle:nth-child(3n) {
     background: var(--boreal-cyan-500);
+    animation-delay: -2s;
+    animation-duration: 10s;
+    box-shadow: 0 0 4px var(--boreal-cyan-500);
+  }
+
+  .particle:nth-child(4n) {
+    background: var(--boreal-blue-400);
+    animation-delay: -3s;
+    animation-duration: 7s;
+    box-shadow: 0 0 4px var(--boreal-blue-400);
+  }
+
+  .particle:nth-child(5n) {
+    background: var(--boreal-purple-400);
     animation-delay: -4s;
-    animation-duration: 12s;
+    animation-duration: 9s;
+    box-shadow: 0 0 4px var(--boreal-purple-400);
   }
 
   @keyframes float {
@@ -277,13 +294,13 @@
       opacity: 0;
     }
     10% {
-      opacity: 0.3;
+      opacity: 0.8;
     }
     90% {
-      opacity: 0.3;
+      opacity: 0.8;
     }
     100% {
-      transform: translateY(-100px) translateX(100px) rotate(360deg);
+      transform: translateY(-100px) translateX(150px) rotate(360deg);
       opacity: 0;
     }
   }
