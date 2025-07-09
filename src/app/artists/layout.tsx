@@ -29,10 +29,10 @@ export const metadata: Metadata = {
     siteName: "Boreal Crew",
     images: [
       {
-        url: "/assets/artists-og.jpg",
+        url: "/assets/artists/snow.jpeg",
         width: 1200,
         height: 630,
-        alt: "Artistas - Boreal Crew",
+        alt: "Snow - DJ da Boreal Crew",
       },
     ],
     locale: "pt_BR",
