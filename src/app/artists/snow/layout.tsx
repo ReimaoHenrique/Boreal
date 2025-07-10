@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://borealcrew.com"),
+  metadataBase: new URL("https://borealcrew.vercel.app/"),
   alternates: {
     canonical: "/artistas/snow",
   },
@@ -22,11 +22,11 @@ export const metadata: Metadata = {
     title: "DJ SNOW - Boreal Crew | Techno Underground",
     description:
       "DJ Snow (@djsnow71) é um dos nomes mais respeitados da cena Techno underground brasileira. Conhecido por suas batidas profundas e atmosferas industriais.",
-    url: "https://borealcrew.com/artistas/snow",
+    url: "https://borealcrew.vercel.app/artistas/snow",
     siteName: "Boreal Crew",
     images: [
       {
-        url: "/assets/artists/snow.jpeg",
+        url: "https://borealcrew.vercel.app/assets/artists/snow.jpeg",
         width: 1200,
         height: 630,
         alt: "DJ Snow - Boreal Crew",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     title: "DJ SNOW - Boreal Crew | Techno Underground",
     description:
       "DJ Snow (@djsnow71) é um dos nomes mais respeitados da cena Techno underground brasileira. Conhecido por suas batidas profundas e atmosferas industriais.",
-    images: ["/assets/artists/snow.jpeg"],
+    images: ["https://borealcrew.vercel.app/assets/artists/snow.jpeg"],
     creator: "@borealcrew",
   },
   other: {

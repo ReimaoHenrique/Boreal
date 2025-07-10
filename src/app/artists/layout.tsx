@@ -30,8 +30,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/assets/artists/snow.jpeg",
-        width: 150,
-        height: 150,
+        width: 1200,
+        height: 630,
         alt: "Snow - DJ da Boreal Crew",
       },
     ],

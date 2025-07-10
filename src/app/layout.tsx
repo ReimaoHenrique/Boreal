@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     "Salvador Bahia",
   ],
   authors: [{ name: "Boreal Crew" }],
+  metadataBase: new URL("https://borealcrew.com"),
   openGraph: {
     title: "Boreal Crew - Paradise Edition",
     description: "A experiência mais imersiva de música eletrônica do Brasil.",
