@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { Calendar, MapPin, Users, Clock } from "lucide-react";
 
 interface EventInfoProps {
-  date: string;
-  time: string;
-  venue: string;
-  capacity: string;
+  date?: string;
+  time?: string;
+  venue?: string;
+  capacity?: string;
   className?: string;
   showAnimation?: boolean;
 }

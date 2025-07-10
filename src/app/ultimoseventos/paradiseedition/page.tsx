@@ -115,7 +115,7 @@ export default function ParadiseEditionPage() {
             <EventInfo
               date={event.date}
               time={event.time}
-              showAnimation={true}
+              showAnimation={false}
             />
 
             <motion.div
