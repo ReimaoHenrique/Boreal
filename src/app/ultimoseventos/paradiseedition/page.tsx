@@ -10,15 +10,12 @@ import ArtistCard from "@/components/ArtistCard";
 // Dados do evento Paradise Edition
 const event = {
   name: "BOREAL CLUB - PARADISE EDITION",
-  date: "15 de Agosto, 2025",
+  date: "5 de Julho, 2025",
   time: "19:00 - 07:00",
-  venue: "Paradise Beach Club",
   location: "Copacabana, Rio de Janeiro",
   attendees: "3.500+",
-  capacity: "4.000",
   status: "Próximo Evento",
-  description:
-    "A experiência mais imersiva de música eletrônica do Brasil. Uma noite inesquecível com os melhores DJs da cena nacional, em um ambiente paradisíaco à beira-mar.",
+
   highlights: [
     "6 DJs de renome nacional",
     "Sistema de som de última geração",
@@ -115,16 +112,10 @@ export default function ParadiseEditionPage() {
               EDITION
             </h2>
 
-            <p className="text-xl md:text-2xl mb-12 text-cyan-300 max-w-4xl mx-auto">
-              {event.description}
-            </p>
-
             <EventInfo
               date={event.date}
               time={event.time}
-              venue={event.venue}
-              capacity={event.capacity}
-              showAnimation={false}
+              showAnimation={true}
             />
 
             <motion.div
