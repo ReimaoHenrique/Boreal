@@ -63,6 +63,7 @@ npm run lint
 ## 🎨 Principais Melhorias da Migração
 
 ### ✅ Otimizações do Next.js
+
 - **App Router** - Roteamento moderno do Next.js 13+
 - **Server Components** - Renderização no servidor
 - **Otimização de imagens** - Carregamento otimizado
@@ -70,12 +71,14 @@ npm run lint
 - **Headers de segurança** - Configurações de segurança
 
 ### ✅ Performance
+
 - **Compressão automática** - Arquivos comprimidos
 - **Code splitting** - Divisão automática do código
 - **Lazy loading** - Carregamento sob demanda
 - **Otimização de CSS** - CSS otimizado para produção
 
 ### ✅ Desenvolvimento
+
 - **TypeScript** - Tipagem completa
 - **ESLint** - Linting configurado
 - **Hot reload** - Recarregamento automático
@@ -94,6 +97,7 @@ O projeto está pronto para deploy em qualquer plataforma que suporte Next.js:
 ## 📱 Responsividade
 
 O site é totalmente responsivo e funciona em:
+
 - Desktop (1920px+)
 - Tablet (768px - 1024px)
 - Mobile (320px - 767px)
@@ -124,6 +128,7 @@ O novo componente `CountdownTimer` inclui:
 - **Indicador de economia** mostrando o valor poupado
 
 ### Características do Contador:
+
 - Atualização automática a cada segundo
 - Exibição de dias, horas, minutos e segundos
 - Efeitos visuais com glassmorphism
@@ -133,12 +138,14 @@ O novo componente `CountdownTimer` inclui:
 ## 🔧 Configurações Personalizadas
 
 ### Tailwind CSS
+
 - Paleta de cores personalizada (tema Boreal)
 - Variáveis CSS customizadas
 - Efeitos glassmorphism
 - Animações personalizadas
 
 ### Next.js
+
 - Headers de segurança configurados
 - Otimização de imagens habilitada
 - Compressão automática
@@ -148,3 +155,12 @@ O novo componente `CountdownTimer` inclui:
 
 Este projeto é propriedade do Boreal Club. Todos os direitos reservados.
 
+https://www.instagram.com/p/DGsyXwiROFP/ ByBrothers V
+https://www.instagram.com/sevenlivebr/ seven V
+
+os que passaram  
+https://www.instagram.com/_necrophos/ v
+https://www.instagram.com/wisllowmusic/ v
+https://www.instagram.com/kauffmanndj/ v
+https://www.instagram.com/zerkoficiall/?g=5 v
+https://www.instagram.com/alfaoficialdj/

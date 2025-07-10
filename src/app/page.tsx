@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import GlassButton from "@/components/GlassButton";
 import GlassCard from "@/components/GlassCard";
 import ParticleBackground from "@/components/ParticleBackground";
@@ -9,7 +8,7 @@ import HeroAurora from "@/components/HeroAurora";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import EventCard from "@/components/EventCard";
-import ArtistCard from "@/components/ArtistCard";
+import MarqueeArtistGroup from "@/components/MarqueeArtistGroup";
 
 export default function Home() {
   // Data do evento - 20 de Setembro, 2025 às 20:00
@@ -19,8 +18,16 @@ export default function Home() {
     element?.scrollIntoView({ behavior: "smooth" });
   };
 
+  // Handler para bloquear menu de contexto
+  const handleContextMenu = (e: React.MouseEvent) => {
+    e.preventDefault();
+  };
+
   return (
-    <div className="min-h-screen relative overflow-x-hidden">
+    <div
+      className="min-h-screen relative overflow-x-hidden select-none"
+      onContextMenu={handleContextMenu}
+    >
       <ParticleBackground particleCount={30} />
 
       {/* Navigation */}
@@ -68,8 +75,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Artistas da Casa Section */}
-      <section id="artistas" className="py-20 relative">
+      {/* Nossos Artistas Convidados Section */}
+      <section id="convidados" className="py-20 relative">
         <div className="container mx-auto px-6">
           <motion.h2
             className="text-4xl md:text-6xl font-bold text-center mb-16 text-glow-cyan"
@@ -77,54 +84,75 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            ARTISTAS DA CASA
+            Nossos Artistas Convidados
           </motion.h2>
 
-          <motion.p
-            className="text-xl text-center mb-12 text-gray-300 max-w-3xl mx-auto"
+          <motion.div
+            className="flex flex-col gap-12"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Conheça os talentos que fazem do Boreal Crew a experiência mais
-            imersiva de música eletrônica do Brasil
-          </motion.p>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            <ArtistCard
-              key="dj-aurora"
-              id="dj-aurora"
-              name="DJ AURORA"
-              genre="Progressive House"
-              bio="Pioneira do Progressive House no Brasil, conhecida por suas transições suaves e atmosferas mágicas."
-              featured={false}
-              index={0}
-              href="/artists/dj-aurora"
+            {/* Marquee indo da esquerda para a direita (right) */}
+            <MarqueeArtistGroup
+              direction="right"
+              artists={[
+                {
+                  artist: "Snow",
+                  genre: "Psytrance",
+                  description: "This artist is great!",
+                  image: "/assets/artists/snow.jpeg",
+                },
+                {
+                  artist: "ByBrothers",
+                  genre: "Techno",
+                  description: "Energetic and hypnotic sets.",
+                  image: "/assets/artists/ByBrothers.jpeg",
+                },
+                {
+                  artist: "kauffmanndj",
+                  genre: "Trance",
+                  description: "Futuristic and immersive experience.",
+                  image: "/assets/artists/kauffmanndj.jpg",
+                },
+                {
+                  artist: "wisllow",
+                  genre: "Electro House",
+                  description: "Bringing the party to the next level.",
+                  image: "/assets/artists/wisllow.webp",
+                },
+              ]}
             />
-            <ArtistCard
-              key="dj-snow"
-              id="dj-snow"
-              name="dj-snow"
-              genre="Farofa"
-              bio="Mestre do estilo Farofa brasileiro, combina batidas pulsantes com elementos normais."
-              image="/assets/artists/snow.jpeg"
-              featured={true}
-              index={1}
-              href="/artists/snow"
+            {/* Marquee indo da direita para a esquerda (left) */}
+            <MarqueeArtistGroup
+              direction="left"
+              artists={[
+                {
+                  artist: "necrophos",
+                  genre: "Progressive House",
+                  description: "Atmospheric and magical transitions.",
+                  image: "/assets/artists/necrophos.jpeg",
+                },
+                {
+                  artist: "Seven",
+                  genre: "Electro House",
+                  description: "Bringing the party to the next level.",
+                  image: "/assets/artists/seven.jpeg",
+                },
+                {
+                  artist: "Alfa",
+                  genre: "Progressive House",
+                  description: "Atmospheric and magical transitions.",
+                  image: "/assets/artists/Alfa.jpeg",
+                },
+                {
+                  artist: "zerk",
+                  genre: "Electro House",
+                  description: "Bringing the party to the next level.",
+                  image: "/assets/artists/zerk.jpeg",
+                },
+              ]}
             />
-          </div>
-
-          <motion.div
-            className="text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <Link href="/artistas">
-              <GlassButton variant="accent" size="lg" glow>
-                Ver Todos os Artistas
-              </GlassButton>
-            </Link>
           </motion.div>
         </div>
       </section>
