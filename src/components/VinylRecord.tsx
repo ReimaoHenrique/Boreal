@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 
 interface VinylRecordProps {
   className?: string;
@@ -50,16 +49,38 @@ export default function VinylRecord({
         ease: "easeOut",
       }}
     >
-      <Image
-        src="/assets/vinyl-record.png"
-        alt="Vinyl Record"
-        width={size}
-        height={size}
-        className="w-full h-full object-cover"
+      <motion.div
         style={{
-          animation: `spin ${speed}s linear infinite`,
+          width: "100%",
+          height: "100%",
+          borderRadius: "50%",
+          background:
+            "linear-gradient(45deg, #1a1a1a 0%, #333 50%, #1a1a1a 100%)",
+          border: "2px solid #666",
+          position: "relative",
         }}
-      />
+        animate={{ rotate: 360 }}
+        transition={{
+          duration: speed,
+          repeat: Infinity,
+          ease: "linear",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "20%",
+            height: "20%",
+            borderRadius: "50%",
+            background:
+              "linear-gradient(45deg, #ffd700 0%, #ffed4e 50%, #ffd700 100%)",
+            border: "2px solid #ffd700",
+          }}
+        />
+      </motion.div>
     </motion.div>
   );
 }

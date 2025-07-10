@@ -9,7 +9,7 @@ interface ArtistCardProps {
   id: string;
   name: string;
   genre: string;
-  bio: string;
+  bio?: string;
   image?: string;
   featured?: boolean;
   index?: number;
@@ -45,7 +45,9 @@ export default function ArtistCard({
       </h3>
       <p className="text-purple-300 mb-2">{genre}</p>
       <p className="text-sm text-gray-400 mb-4 line-clamp-3">{bio}</p>
-      <div className="text-cyan-400 text-sm font-medium">Ver Perfil →</div>
+      {href && (
+        <div className="text-cyan-400 text-sm font-medium">Ver Perfil →</div>
+      )}
     </GlassCard>
   );
 

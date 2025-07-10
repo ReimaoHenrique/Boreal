@@ -31,15 +31,15 @@ export default function HeroAurora({
         >
           <div className="mb-8"></div>
 
-          <h1 className="aurora-title text-6xl md:text-8xl font-bold mb-6 text-glow-blue font-advent">
+          <h1 className=" text-6xl md:text-8xl font-bold mb-6 text-glow-blue font-appears">
             BOREAL
           </h1>
-          <h2 className="text-3xl md:text-5xl font-light mb-4 text-glow-purple font-advent">
+          <h2 className="text-3xl md:text-5xl font-light mb-4 text-glow-purple font-appears">
             Crew
           </h2>
 
-          <p className="text-xl md:text-2xl mb-8 text-cyan-300 font-advent">
-            MYSTIC EDITION
+          <p className="text-xl md:text-2xl mb-8 text-cyan-300 font-appears">
+            Paradise Edition
           </p>
 
           <p className="text-lg md:text-xl mb-12 text-cyan-300 max-w-3xl mx-auto">

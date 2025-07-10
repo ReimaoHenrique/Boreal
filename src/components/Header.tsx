@@ -36,7 +36,7 @@ export default function Header({ onScrollToSection }: HeaderProps) {
         <div className="flex items-center justify-between">
           <Link href="/">
             <motion.div
-              className="text-2xl font-bold text-glow-cyan cursor-pointer"
+              className="text-2xl font-bold text-glow-cyan cursor-pointer font-appears "
               whileHover={{ scale: 1.05 }}
             >
               BOREAL

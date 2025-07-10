@@ -9,6 +9,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Appears";
+  src: url("/fonts/Appears.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -329,6 +337,10 @@
   /* AdventPro font class */
   .font-advent {
     font-family: "AdventPro", sans-serif;
+  }
+
+  .font-appears {
+    font-family: "Appears", sans-serif;
   }
 
   /* Reduced glow for elements with glow prop */
