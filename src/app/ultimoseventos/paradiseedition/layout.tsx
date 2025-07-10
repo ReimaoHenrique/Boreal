@@ -14,19 +14,19 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL("https://borealclub.com"),
+  metadataBase: new URL("https://borealcrew.vercel.app/"),
   alternates: {
     canonical: "/ultimoseventos/paradiseedition",
   },
   openGraph: {
-    title: "BOREAL CLUB - PARADISE EDITION | 5 de Julho, 2025",
+    title: "BOREAL CLUB - PARADISE EDITION | 15 de Agosto, 2025",
     description:
-      "A experiência mais imersiva de música eletrônica do Brasil. Uma noite inesquecível com os melhores DJs da cena nacional.",
-    url: "https://borealclub.com/ultimoseventos/paradiseedition",
+      "A experiência mais imersiva de música eletrônica do Brasil. Uma noite inesquecível com os melhores DJs da cena nacional, em um ambiente paradisíaco à beira-mar no Paradise Beach Club.",
+    url: "https://borealcrew.vercel.app/ultimoseventos/paradiseedition",
     siteName: "Boreal Club",
     images: [
       {
-        url: "/assets/events/boreal.jpg",
+        url: "https://borealcrew.vercel.app/assets/events/boreal.jpg",
         width: 1200,
         height: 630,
         alt: "Boreal Club - Paradise Edition",
@@ -39,8 +39,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "BOREAL CLUB - PARADISE EDITION | 15 de Agosto, 2025",
     description:
-      "A experiência mais imersiva de música eletrônica do Brasil. Uma noite inesquecível com os melhores DJs da cena nacional.",
-    images: ["/assets/events/boreal.jpg"],
+      "A experiência mais imersiva de música eletrônica do Brasil. Uma noite inesquecível com os melhores DJs da cena nacional, em um ambiente paradisíaco à beira-mar no Paradise Beach Club.",
+    images: ["https://borealcrew.vercel.app/assets/events/boreal.jpg"],
     creator: "@borealclub",
   },
   other: {
