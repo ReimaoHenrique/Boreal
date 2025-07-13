@@ -7,9 +7,9 @@ import Image from "next/image";
 interface EventCardProps {
   name: string;
   date: string;
-  location: string;
-  attendees: string;
-  destaques: string;
+  location?: string;
+  attendees?: string;
+  destaques?: string;
   image?: string;
   index?: number;
   href?: string;

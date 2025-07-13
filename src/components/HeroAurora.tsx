@@ -4,6 +4,7 @@ import GlassButton from "@/components/GlassButton";
 import ParticleBackground from "@/components/ParticleBackground";
 import CountdownTimer from "@/components/CountdownTimer";
 import EventInfo from "@/components/EventInfo";
+import { useEffect, useRef, useState } from "react";
 
 interface HeroAuroraProps {
   eventDate?: Date;
@@ -12,13 +13,83 @@ interface HeroAuroraProps {
 export default function HeroAurora({
   eventDate = new Date("2025-09-20T20:00:00-03:00"),
 }: HeroAuroraProps) {
-  // Parallax customizado
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoError, setVideoError] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (videoRef.current) {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.5;
+        videoRef.current.style.transform = `translateY(${rate}px)`;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleVideoError = () => {
+    console.error("Erro ao carregar vídeo aurora.mp4");
+    setVideoError(true);
+  };
 
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative pt-20 hero-bg"
+      className="min-h-screen flex items-center justify-center relative pt-20 hero-bg overflow-hidden"
     >
+      {/* Video Background com Parallax */}
+      {!videoError ? (
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-45"
+          style={{
+            zIndex: 1,
+            minWidth: "100vw",
+            minHeight: "100vh",
+            width: "auto",
+            height: "auto",
+          }}
+          onError={handleVideoError}
+        >
+          <source src="/assets/aurora.mp4" type="video/mp4" />
+        </video>
+      ) : (
+        /* Fallback se o vídeo não carregar */
+        <div
+          className="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 via-cyan-900 to-purple-800 animate-pulse"
+          style={{ zIndex: 1 }}
+        >
+          {/* Efeito de partículas no fallback */}
+          <div className="absolute inset-0 opacity-30">
+            <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-cyan-400 rounded-full animate-ping"></div>
+            <div
+              className="absolute top-1/3 right-1/3 w-1 h-1 bg-purple-400 rounded-full animate-ping"
+              style={{ animationDelay: "1s" }}
+            ></div>
+            <div
+              className="absolute bottom-1/4 left-1/2 w-1.5 h-1.5 bg-blue-400 rounded-full animate-ping"
+              style={{ animationDelay: "2s" }}
+            ></div>
+            <div
+              className="absolute top-1/2 right-1/4 w-1 h-1 bg-cyan-300 rounded-full animate-ping"
+              style={{ animationDelay: "0.5s" }}
+            ></div>
+          </div>
+        </div>
+      )}
+
+      {/* Overlay mais sutil para garantir legibilidade */}
+      <div
+        className="absolute inset-0 bg-black bg-opacity-10"
+        style={{ zIndex: 2 }}
+      ></div>
+
       <ParticleBackground particleCount={60} />
       <div
         className="container mx-auto px-6 text-center hero-content"

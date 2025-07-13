@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import GlassButton from "@/components/GlassButton";
 import GlassCard from "@/components/GlassCard";
 import ParticleBackground from "@/components/ParticleBackground";
 import HeroAurora from "@/components/HeroAurora";
@@ -50,15 +49,34 @@ export default function Home() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <EventCard
-              key="paradiseedition"
+              key="BorealParadiseEdition"
               name="BOREAL CREW - Paradise Edition"
               date="5 de Julho, 2025"
               location="Paradise Beach Club"
-              attendees="1783+"
               destaques="DJ now, Neon Beats, Cyber Wave"
-              image="/assets/events/boreal.jpg"
+              image="/assets/events/ParadiseEdition/CapaParadiseEdition.jpg"
               index={0}
-              href="/ultimoseventos/paradiseedition"
+              href="/ultimoseventos/ParadiseEdition"
+            />
+            <EventCard
+              key="BorealOpenAir"
+              name="BOREAL CREW - Open Air"
+              date="16 de Março, 2025"
+              location=" Jauá Camaçari/BA "
+              destaques="DJ now, Neon Beats, Cyber Wave"
+              image="/assets/events/OpenAir/CapaOpenAir.jpeg"
+              index={1}
+              href="/ultimoseventos/OpenAir"
+            />
+            <EventCard
+              key="BorealFirstDance"
+              name="BOREAL CREW - First Dance"
+              date="16 de Março, 2025"
+              location=" Jauá Camaçari/BA "
+              destaques="DJ now, Neon Beats, Cyber Wave"
+              image="/assets/events/FirstDance/CapaFirstDance.webp"
+              index={1}
+              href="/ultimoseventos/FirstDance"
             />
           </div>
 
@@ -67,11 +85,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <GlassButton variant="neon" size="lg">
-              Ver Galeria Completa
-            </GlassButton>
-          </motion.div>
+          ></motion.div>
         </div>
       </section>
 
