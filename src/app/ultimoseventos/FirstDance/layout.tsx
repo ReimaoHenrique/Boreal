@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     siteName: "Boreal Club",
     images: [
       {
-        url: "https://borealcrew.vercel.app/assets/events/FristDance/CapaFirstDance.webp",
+        url: "https://borealcrew.vercel.app/assets/events/FirstDance/CapaFirstDance.webp",
         width: 1200,
         height: 630,
         alt: "Boreal Club - Paradise Edition",
