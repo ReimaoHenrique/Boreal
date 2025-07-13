@@ -47,7 +47,7 @@ export default function Home() {
           }}
           onError={(e) => console.error("Erro no vídeo:", e)}
         >
-          <source src="/assets/boreal2.mp4" type="video/mp4" />
+          <source src="/assets/boreal.mp4" type="video/mp4" />
         </video>
 
         {/* Fallback caso o vídeo não carregue */}
