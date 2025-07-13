@@ -2,8 +2,6 @@
 
 import { motion } from "framer-motion";
 import GlassCard from "@/components/GlassCard";
-import ParticleBackground from "@/components/ParticleBackground";
-import HeroAurora from "@/components/HeroAurora";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import EventCard from "@/components/EventCard";
@@ -27,13 +25,59 @@ export default function Home() {
       className="min-h-screen relative overflow-x-hidden select-none"
       onContextMenu={handleContextMenu}
     >
-      <ParticleBackground particleCount={30} />
-
       {/* Navigation */}
       <Header onScrollToSection={scrollToSection} />
 
-      {/* Hero Section */}
-      <HeroAurora />
+      {/* Hero Section com Vídeo */}
+      <section
+        id="home"
+        className="min-h-screen flex items-center justify-center relative overflow-hidden"
+      >
+        {/* Vídeo Background */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover z-0"
+          style={{ clipPath: "inset(0 0 50px 0)" }}
+          onLoadStart={() => console.log("Vídeo começando a carregar")}
+          onCanPlay={() => {
+            console.log("Vídeo pronto para reproduzir");
+          }}
+          onError={(e) => console.error("Erro no vídeo:", e)}
+        >
+          <source src="/assets/boreal.mp4" type="video/mp4" />
+        </video>
+
+        {/* Fallback caso o vídeo não carregue */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-cyan-900 z-0 opacity-50"></div>
+
+        <div className="container mx-auto px-6 text-center relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+          >
+            <h1 className="text-6xl md:text-8xl font-bold mb-6 text-white drop-shadow-2xl">
+              BOREAL
+            </h1>
+            <h2 className="text-3xl md:text-5xl font-light mb-8 text-cyan-300 drop-shadow-2xl">
+              Crew
+            </h2>
+            <p className="text-xl md:text-2xl mb-12 text-white max-w-2xl mx-auto drop-shadow-lg">
+              Uma jornada mística através da música eletrônica
+            </p>
+            <motion.button
+              className="px-8 py-4 bg-gradient-to-r from-purple-500 to-cyan-500 text-white rounded-full text-lg font-bold hover:scale-105 transition-transform"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Próximo Evento
+            </motion.button>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Últimos Eventos Section */}
       <section id="eventos" className="py-20 relative">
