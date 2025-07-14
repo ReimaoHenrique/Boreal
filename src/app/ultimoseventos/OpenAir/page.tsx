@@ -4,21 +4,21 @@ import GlassButton from "@/components/GlassButton";
 import ParticleBackground from "@/components/ParticleBackground";
 import EventInfo from "@/components/EventInfo";
 import HeroVideo from "@/components/HeroVideo";
-import ArtistCard from "@/components/ArtistCard";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import ImageCarousel from "@/components/ImageCarousel";
 import GoogleMap from "@/components/GoogleMap";
 import EventTimeline from "@/components/EventTimeline";
+import { useRef } from "react";
+import { BlurFade } from "@/components/magicui/blur-fade";
 
-// Dados do evento Paradise Edition
+// Dados do evento
 const event = {
-  name: "BOREAL CLUB - Paradise EDITION",
-  date: "5 de Julho, 2025",
-  time: "19:00 - 07:00",
-  location: "Largo dos Aflitos - Dois de Julho, Salvador - BA",
-  attendees: "3.500+",
-  status: "Próximo Evento",
+  name: "Boreal  Open Air",
+  date: "16 de Março, 2025",
+  time: "19:00 - 06:00",
+  location: "Jauá , Camaçari - BA",
+  status: "Ultimo Evento",
+  capacidade: "500",
 
   highlights: [
     "6 DJs de renome nacional",
@@ -81,58 +81,77 @@ const event = {
   // Timeline do evento
   timeline: [
     {
-      time: "19:00",
+      time: "08:00",
       title: "Abertura dos Portões",
       description:
         "Chegue cedo para garantir o melhor lugar e aproveitar o welcome drink premium.",
     },
     {
+      time: "09:00",
+      title: "Batativiz",
+    },
+    {
+      time: "10:00",
+      title: "Dolphin",
+    },
+    {
+      time: "11:00",
+      title: "Fly",
+    },
+    {
+      time: "12:00",
+      title: "ByBrothers",
+    },
+    {
+      time: "13:00",
+      title: "Alfa Beats",
+    },
+    {
+      time: "14:00",
+      title: "Kauffmann",
+    },
+    {
+      time: "15:00",
+      title: "Rajj",
+    },
+    {
+      time: "16:00",
+      title: "Haze",
+    },
+    {
+      time: "17:00",
+      title: "Seven",
+    },
+    {
+      time: "18:00",
+      title: "Boulevard",
+    },
+    {
+      time: "19:00",
+      title: "Japex",
+    },
+
+    {
       time: "20:00",
-      title: "Warm-up Session",
-      description: "Aquecimento com beats suaves para preparar o ambiente.",
-      artist: "Kauffmann DJ",
+      title: "Bragi x Highlit",
     },
     {
-      time: "21:30",
-      title: "Deep House Vibes",
-      description: "Mergulhe nas batidas profundas e melodias hipnóticas.",
-      artist: "Snow",
+      time: "21:00",
+      title: "Zerk",
     },
     {
-      time: "23:00",
-      title: "Tech House Explosion",
-      description: "Energia máxima com os melhores hits da cena tech house.",
-      artist: "ByBrothers",
+      time: "22:00",
+      title: "Snow",
     },
     {
-      time: "00:30",
-      title: "Progressive Journey",
-      description:
-        "Uma jornada progressiva através de paisagens sonoras únicas.",
-      artist: "Seven",
-    },
-    {
-      time: "02:00",
-      title: "Techno Madness",
-      description:
-        "O ápice da noite com batidas pesadas e energia incontrolável.",
-      artist: "Alfa",
-    },
-    {
-      time: "03:30",
-      title: "Industrial Finale",
-      description: "Encerramento épico com sons industriais e hard techno.",
-      artist: "Necrophos",
-    },
-    {
-      time: "05:00",
-      title: "Sunrise Session",
-      description: "Relaxamento com música ambiente enquanto o sol nasce.",
+      time: "22:00",
+      title: "Fim de festa",
     },
   ],
 };
 
 export default function ParadiseEditionPage() {
+  const lineupRef = useRef<HTMLDivElement>(null);
   return (
     <div className="relative overflow-x-hidden">
       <Header />
@@ -148,16 +167,15 @@ export default function ParadiseEditionPage() {
             exit={{ opacity: 0, y: 50 }}
           >
             <h1 className="text-5xl md:text-8xl font-bold mb-6 text-glow-blue font-appears">
-              PARADISE
+              {event.name}
             </h1>
-            <h2 className="text-3xl md:text-6xl font-light mb-8 text-glow-purple font-appears">
-              EDITION
-            </h2>
 
             <EventInfo
               date={event.date}
               time={event.time}
               showAnimation={false}
+              venue={event.location}
+              capacity="500"
             />
 
             <motion.div
@@ -166,10 +184,13 @@ export default function ParadiseEditionPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.5 }}
             >
-              <GlassButton variant="accent" size="lg" glow>
-                Comprar Ingressos
-              </GlassButton>
-              <GlassButton variant="neon" size="lg">
+              <GlassButton
+                variant="accent"
+                size="lg"
+                onClick={() => {
+                  lineupRef.current?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
                 Ver Line-up
               </GlassButton>
             </motion.div>
@@ -180,6 +201,56 @@ export default function ParadiseEditionPage() {
       {/* Seção de Descrição do Evento */}
       <section className="min-h-screen bg-gradient-to-b from-black to-gray-900 py-20">
         <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-6xl font-bold mb-8 text-glow-purple font-advent">
+              GALERIA
+            </h2>
+            <p className="text-xl text-cyan-300 max-w-3xl mx-auto mb-12">
+              Reviva os momentos mais incríveis dos nossos eventos anteriores
+            </p>
+            <div className="columns-2 gap-4 sm:columns-3 max-w-5xl mx-auto">
+              {[
+                // Fotos ParadiseEdition
+                "/assets/events/ParadiseEdition/CapaParadiseEdition.jpg",
+                "/assets/events/ParadiseEdition/necro.webp",
+                "/assets/events/ParadiseEdition/zerks.webp",
+                "/assets/events/ParadiseEdition/alfa.webp",
+                "/assets/events/ParadiseEdition/dj4.webp",
+                "/assets/events/ParadiseEdition/dj3.webp",
+                "/assets/events/ParadiseEdition/djSevem.webp",
+                "/assets/events/ParadiseEdition/djsnow.webp",
+                // Vídeos ParadiseEdition
+                "/assets/events/videos/video-pista-parad.mp4",
+                "/assets/events/videos/hero.mp4",
+              ].map((mediaUrl, idx) => (
+                <BlurFade key={mediaUrl} delay={0.25 + idx * 0.05} inView>
+                  {mediaUrl.endsWith(".mp4") ? (
+                    <video
+                      className="mb-4 w-full rounded-lg object-contain"
+                      src={mediaUrl}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                    />
+                  ) : (
+                    <img
+                      className="mb-4 w-full rounded-lg object-contain"
+                      src={mediaUrl}
+                      alt={`Foto ou vídeo do evento ${idx + 1}`}
+                    />
+                  )}
+                </BlurFade>
+              ))}
+            </div>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -215,16 +286,15 @@ export default function ParadiseEditionPage() {
                 enquanto lasers e luzes criam uma atmosfera mágica ao seu redor.
               </p>
               <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-                Durante 12 horas ininterruptas, você será transportado para
+                Durante 10 horas ininterruptas, você será transportado para
                 outra dimensão através da música dos melhores DJs da cena
-                nacional e internacional. Cada set foi cuidadosamente
-                selecionado para criar uma progressão perfeita de energia e
-                emoção.
+                nacional. Cada set foi cuidadosamente selecionado para criar uma
+                progressão perfeita de energia e emoção.
               </p>
               <p className="text-lg text-gray-300 leading-relaxed">
-                Além da música, oferecemos uma experiência gastronômica premium,
-                áreas VIP exclusivas e a oportunidade de conhecer pessoalmente
-                os artistas que fazem a história da música eletrônica.
+                Além da música, oferecemos uma, áreas VIP exclusivas e a
+                oportunidade de conhecer pessoalmente os artistas que fazem a
+                história da música eletrônica.
               </p>
             </motion.div>
 
@@ -258,24 +328,6 @@ export default function ParadiseEditionPage() {
                       Área VIP com vista privilegiada
                     </span>
                   </li>
-                  <li className="flex items-start">
-                    <span className="text-cyan-400 mr-3 text-xl">✦</span>
-                    <span className="text-gray-300">
-                      Welcome drink premium incluído
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-cyan-400 mr-3 text-xl">✦</span>
-                    <span className="text-gray-300">
-                      Meet & Greet com os artistas
-                    </span>
-                  </li>
-                  <li className="flex items-start">
-                    <span className="text-cyan-400 mr-3 text-xl">✦</span>
-                    <span className="text-gray-300">
-                      Food trucks com gastronomia especial
-                    </span>
-                  </li>
                 </ul>
               </div>
             </motion.div>
@@ -293,94 +345,6 @@ export default function ParadiseEditionPage() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            {/* Seção de Galeria com Carrossel */}
-            <section className="min-h-screen bg-gradient-to-b from-gray-900 to-black py-20">
-              <div className="container mx-auto px-6">
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1 }}
-                  viewport={{ once: true }}
-                  className="text-center mb-16"
-                >
-                  <h2 className="text-4xl md:text-6xl font-bold mb-8 text-glow-purple font-advent">
-                    GALERIA
-                  </h2>
-                  <p className="text-xl text-cyan-300 max-w-3xl mx-auto">
-                    Reviva os momentos mais incríveis dos nossos eventos
-                    anteriores
-                  </p>
-                </motion.div>
-
-                {/* Vídeo Principal */}
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, delay: 0.2 }}
-                  viewport={{ once: true }}
-                  className="mb-16"
-                >
-                  <div className="max-w-4xl mx-auto">
-                    {/* Carrossel de Imagens */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 50 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 1, delay: 0.4 }}
-                      viewport={{ once: true }}
-                    >
-                      <ImageCarousel images={event.gallery} />
-                    </motion.div>
-
-                    {/* Título VÍDEOS */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 30 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.8, delay: 0.3 }}
-                      viewport={{ once: true }}
-                      className="text-center my-16"
-                    >
-                      <h2 className="text-4xl md:text-6xl font-bold mb-4 text-glow-cyan font-advent">
-                        VÍDEOS
-                      </h2>
-                      <p className="text-xl text-cyan-300 max-w-3xl mx-auto">
-                        Assista aos melhores momentos dos nossos eventos
-                      </p>
-                    </motion.div>
-
-                    <div className="relative rounded-xl overflow-hidden shadow-2xl">
-                      <video
-                        className="w-full h-auto"
-                        controls
-                        preload="metadata"
-                        poster="/assets/events/ParadiseEdition/CapaParadiseEdition.jpg"
-                      >
-                        <source
-                          src="/assets/events/ParadiseEdition/videoParadise.mp4"
-                          type="video/mp4"
-                        />
-                        Seu navegador não suporta vídeos.
-                      </video>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
-                    </div>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8 }}
-                  viewport={{ once: true }}
-                  className="text-center"
-                >
-                  <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-                    Cada imagem conta uma história única de energia, música e
-                    conexão. O Paradise Edition promete superar todas as
-                    expectativas e criar memórias que durarão para sempre.
-                  </p>
-                </motion.div>
-              </div>
-            </section>
-
             <h2 className=" mt-9 text-4xl md:text-6xl font-bold mb-8 text-glow-purple font-advent">
               INFORMAÇÕES DO EVENTO
             </h2>
@@ -388,6 +352,7 @@ export default function ParadiseEditionPage() {
 
           {/* Seção da Timeline */}
           <motion.div
+            ref={lineupRef}
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -395,7 +360,7 @@ export default function ParadiseEditionPage() {
           >
             <div className="text-center mb-12">
               <h3 className="text-3xl font-bold mb-4 text-glow-cyan font-advent">
-                PROGRAMAÇÃO
+                Line-up{" "}
               </h3>
               <p className="text-lg text-gray-300">
                 Uma noite completa de música eletrônica
@@ -463,47 +428,6 @@ export default function ParadiseEditionPage() {
           <GoogleMap />
         </div>
       </motion.div>
-
-      {/* Seção de Artistas */}
-      <section className="min-h-screen bg-gradient-to-b from-gray-900 to-black py-20">
-        <div className="container mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-6xl font-bold mb-8 text-glow-purple font-advent">
-              ARTISTAS CONFIRMADOS
-            </h2>
-            <p className="text-xl text-cyan-300 max-w-3xl mx-auto">
-              Os melhores DJs da cena eletrônica brasileira e internacional
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {event.artists.map((artist, index) => (
-              <ArtistCard
-                key={artist.id}
-                id={artist.id}
-                name={artist.name}
-                genre={artist.genre}
-                image={artist.image}
-                index={index}
-              />
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mt-16"
-          ></motion.div>
-        </div>
-      </section>
 
       <Footer />
     </div>

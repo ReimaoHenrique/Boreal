@@ -59,8 +59,8 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            <h1 className="text-6xl md:text-8xl font-bold mb-6 text-white drop-shadow-2xl">
-              BOREAL
+            <h1 className="font-appears text-6xl md:text-8xl font-bold mb-6 text-white drop-shadow-2xl">
+              BOREAL CREW
             </h1>
             <h2 className="text-3xl md:text-5xl font-light mb-8 text-cyan-300 drop-shadow-2xl">
               Crew
@@ -72,6 +72,7 @@ export default function Home() {
               className="px-8 py-4 bg-gradient-to-r from-purple-500 to-cyan-500 text-white rounded-full text-lg font-bold hover:scale-105 transition-transform"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              onClick={() => scrollToSection("eventos")}
             >
               Próximo Evento
             </motion.button>
@@ -216,7 +217,7 @@ export default function Home() {
       </section>
 
       {/* Galeria de Eventos Section */}
-      <section id="galeria" className="py-20 relative">
+      <section id="galeria-de-eventos" className="py-20 relative">
         <div className="container mx-auto px-6">
           <motion.h2
             className="text-4xl md:text-6xl font-bold text-center mb-16 text-glow-cyan"
