@@ -6,10 +6,10 @@ import EventInfo from "@/components/EventInfo";
 import HeroVideo from "@/components/HeroVideo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import GoogleMap from "@/components/GoogleMap";
 import EventTimeline from "@/components/EventTimeline";
 import { useRef } from "react";
 import { BlurFade } from "@/components/magicui/blur-fade";
+import Image from "next/image";
 
 // Dados do evento
 const event = {
@@ -216,18 +216,15 @@ export default function ParadiseEditionPage() {
             </p>
             <div className="columns-2 gap-4 sm:columns-3 max-w-5xl mx-auto">
               {[
-                // Fotos ParadiseEdition
-                "/assets/events/ParadiseEdition/CapaParadiseEdition.jpg",
-                "/assets/events/ParadiseEdition/necro.webp",
-                "/assets/events/ParadiseEdition/zerks.webp",
-                "/assets/events/ParadiseEdition/alfa.webp",
-                "/assets/events/ParadiseEdition/dj4.webp",
-                "/assets/events/ParadiseEdition/dj3.webp",
-                "/assets/events/ParadiseEdition/djSevem.webp",
-                "/assets/events/ParadiseEdition/djsnow.webp",
-                // Vídeos ParadiseEdition
-                "/assets/events/videos/video-pista-parad.mp4",
-                "/assets/events/videos/hero.mp4",
+                "/assets/events/OpenAir/OpenAir.mp4",
+                "/assets/events/OpenAir/OpenAir_foto1.jpg.jpg",
+                "/assets/events/OpenAir/OpenAir_foto2.jpg",
+                "/assets/events/OpenAir/OpenAir_foto2.webp",
+                "/assets/events/OpenAir/OpenAir_foto3.webp",
+                "/assets/events/OpenAir/openair.jpg",
+                "/assets/events/OpenAir/openair2.jpg",
+                "/assets/events/OpenAir/OpenAir2.mp4",
+                "/assets/events/OpenAir/OpenAir4.mp4",
               ].map((mediaUrl, idx) => (
                 <BlurFade key={mediaUrl} delay={0.25 + idx * 0.05} inView>
                   {mediaUrl.endsWith(".mp4") ? (
@@ -240,11 +237,19 @@ export default function ParadiseEditionPage() {
                       playsInline
                     />
                   ) : (
-                    <img
-                      className="mb-4 w-full rounded-lg object-contain"
-                      src={mediaUrl}
-                      alt={`Foto ou vídeo do evento ${idx + 1}`}
-                    />
+                    <div
+                      className="relative mb-4 w-full rounded-lg object-contain"
+                      style={{ aspectRatio: "4/3" }}
+                    >
+                      <Image
+                        src={mediaUrl}
+                        alt={`Foto ou vídeo do evento ${idx + 1}`}
+                        fill
+                        className="rounded-lg object-cover"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        priority={idx < 2}
+                      />
+                    </div>
                   )}
                 </BlurFade>
               ))}
@@ -390,8 +395,8 @@ export default function ParadiseEditionPage() {
                   </h5>
                   <ul className="space-y-2 text-gray-300">
                     <li>• Uber/Taxi: Ponto de referência disponível</li>
-                    <li>• Estacionamento próprio disponível</li>
-                    <li>• Segurança 24h no local</li>
+                    <li>• Estacionamento disponível</li>
+                    <li>• Segurança dorante todo evento</li>
                   </ul>
                 </div>
                 <div>
@@ -417,17 +422,7 @@ export default function ParadiseEditionPage() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
         className="mb-20"
-      >
-        <div className="text-center mb-12">
-          <h3 className="mt-7 text-3xl font-bold mb-4 text-glow-cyan font-advent">
-            LOCALIZAÇÃO
-          </h3>
-          <p className="text-lg text-gray-300">Encontre o local do evento</p>
-        </div>
-        <div className="max-w-2xl mx-auto">
-          <GoogleMap />
-        </div>
-      </motion.div>
+      ></motion.div>
 
       <Footer />
     </div>
