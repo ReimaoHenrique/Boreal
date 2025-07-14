@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import GlassCard from "@/components/GlassCard";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import EventCard from "@/components/EventCard";
 import MarqueeArtistGroup from "@/components/MarqueeArtistGroup";
+import ImageCarousel from "@/components/ImageCarousel";
 
 export default function Home() {
   // Data do evento - 20 de Setembro, 2025 às 20:00
@@ -47,7 +47,7 @@ export default function Home() {
           }}
           onError={(e) => console.error("Erro no vídeo:", e)}
         >
-          <source src="/assets/boreal2.mp4" type="video/mp4" />
+          <source src="/assets/boreal.mp4" type="video/mp4" />
         </video>
 
         {/* Fallback caso o vídeo não carregue */}
@@ -157,26 +157,26 @@ export default function Home() {
               artists={[
                 {
                   artist: "Snow",
-                  genre: "Psytrance",
-                  description: "This artist is great!",
+                  genre: "Progressive psytrance",
+                  description: "Apresentações criativas ",
                   image: "/assets/artists/snow.jpeg",
                 },
                 {
                   artist: "ByBrothers",
-                  genre: "Techno",
-                  description: "Energetic and hypnotic sets.",
+                  genre: "Progressive Offbeat",
+                  description: "Melancólico e emocionante.",
                   image: "/assets/artists/ByBrothers.jpeg",
                 },
                 {
-                  artist: "kauffmanndj",
-                  genre: "Trance",
-                  description: "Futuristic and immersive experience.",
+                  artist: "Kauffman",
+                  genre: "Prog Club",
+                  description: "Sonoridade marcante e explosivo.",
                   image: "/assets/artists/kauffmanndj.jpg",
                 },
                 {
-                  artist: "wisllow",
-                  genre: "Electro House",
-                  description: "Bringing the party to the next level.",
+                  artist: "Wisllow",
+                  genre: "Progressive",
+                  description: "Som único e com personalidade .",
                   image: "/assets/artists/wisllow.webp",
                 },
               ]}
@@ -186,27 +186,27 @@ export default function Home() {
               direction="left"
               artists={[
                 {
-                  artist: "necrophos",
-                  genre: "Progressive House",
-                  description: "Atmospheric and magical transitions.",
+                  artist: "Necrophos",
+                  genre: "Progressive Psytrance",
+                  description: "Som imersivo e psicodélico.",
                   image: "/assets/artists/necrophos.jpeg",
                 },
                 {
                   artist: "Seven",
-                  genre: "Electro House",
-                  description: "Bringing the party to the next level.",
+                  genre: "Progressive Offbeat",
+                  description: "Som mélancolico e explosivo ",
                   image: "/assets/artists/seven.jpeg",
                 },
                 {
-                  artist: "Alfa",
-                  genre: "Progressive House",
-                  description: "Atmospheric and magical transitions.",
+                  artist: "Alfa Beats",
+                  genre: "Minimal Prog",
+                  description: "Carisma e mixagem de qualidade.",
                   image: "/assets/artists/Alfa.jpeg",
                 },
                 {
-                  artist: "zerk",
-                  genre: "Electro House",
-                  description: "Bringing the party to the next level.",
+                  artist: "Zerk",
+                  genre: "Progressive",
+                  description: "Eletrizante ",
                   image: "/assets/artists/zerk.jpeg",
                 },
               ]}
@@ -215,8 +215,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Location Section */}
-      <section id="local" className="py-20 relative">
+      {/* Galeria de Eventos Section */}
+      <section id="galeria" className="py-20 relative">
         <div className="container mx-auto px-6">
           <motion.h2
             className="text-4xl md:text-6xl font-bold text-center mb-16 text-glow-cyan"
@@ -224,63 +224,25 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            LOCALIZAÇÃO
+            Galeria de Eventos
           </motion.h2>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <GlassCard className="p-8">
-                <h3 className="text-3xl font-bold mb-6 text-glow-purple">
-                  Paradise Beach Club
-                </h3>
-                <div className="space-y-4 text-lg">
-                  <div className="flex items-center gap-3">
-                    <span className="text-cyan-400">📍</span>
-                    <span>
-                      Av. Atlântica, 1500 - Copacabana, Rio de Janeiro
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-purple-400">👥</span>
-                    <span>Capacidade para 2000 pessoas</span>
-                  </div>
-                </div>
-
-                <div className="mt-8">
-                  <h4 className="text-xl font-bold mb-4 text-cyan-300">
-                    Como Chegar:
-                  </h4>
-                  <ul className="space-y-2 text-gray-300">
-                    <li>• Metro: Estação Copacabana (Linha 1)</li>
-                    <li>• Ônibus: Linhas 415, 474, 583</li>
-                    <li>• Uber/Taxi: Ponto de referência disponível</li>
-                    <li>• Estacionamento próprio disponível</li>
-                  </ul>
-                </div>
-              </GlassCard>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <GlassCard className="p-4 h-96">
-                <div className="w-full h-full bg-gradient-to-br from-cyan-900/30 to-purple-900/30 rounded-lg flex items-center justify-center">
-                  <div className="text-center">
-                    <span className="text-6xl">📍</span>
-                    <p className="text-xl text-gray-300">Mapa Interativo</p>
-                    <p className="text-sm text-gray-400 mt-2">
-                      Clique para abrir no Google Maps
-                    </p>
-                  </div>
-                </div>
-              </GlassCard>
-            </motion.div>
+          <div className="max-w-4xl mx-auto">
+            <ImageCarousel
+              images={[
+                "/assets/events/FirstDance/CapaFirstDance.webp",
+                "/assets/events/FirstDance/478638833_17845098600417524_5436293515917825999_n.jpg",
+                "/assets/events/ParadiseEdition/CapaParadiseEdition.jpg",
+                "/assets/events/ParadiseEdition/necro.webp",
+                "/assets/events/ParadiseEdition/zerks.webp",
+                "/assets/events/ParadiseEdition/alfa.webp",
+                "/assets/events/ParadiseEdition/dj4.webp",
+                "/assets/events/ParadiseEdition/dj3.webp",
+                "/assets/events/ParadiseEdition/djSevem.webp",
+                "/assets/events/ParadiseEdition/djsnow.webp",
+                "/assets/events/OpenAir/CapaOpenAir.jpeg",
+              ]}
+            />
           </div>
         </div>
       </section>

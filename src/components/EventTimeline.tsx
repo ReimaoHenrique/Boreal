@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import VinylRecord from "@/components/VinylRecord";
 
 interface TimelineItem {
-  time: string;
-  title: string;
-  description: string;
+  time?: string;
+  title?: string;
+  description?: string;
   artist?: string;
 }
 

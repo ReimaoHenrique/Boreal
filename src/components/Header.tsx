@@ -13,8 +13,7 @@ export default function Header({ onScrollToSection }: HeaderProps) {
     "Home",
     "Eventos",
     "Artistas",
-    "Ingressos",
-    "Local",
+    "Galeria de Eventos",
     "Contato",
   ];
 
@@ -44,15 +43,27 @@ export default function Header({ onScrollToSection }: HeaderProps) {
           </Link>
 
           <div className="hidden md:flex space-x-8">
-            {menuItems.map((item) => (
-              <button
-                key={item}
-                onClick={() => handleMenuClick(item)}
-                className="text-white hover:text-cyan-400 transition-colors duration-300 font-medium"
-              >
-                {item}
-              </button>
-            ))}
+            {menuItems.map((item) =>
+              item === "Contato" ? (
+                <a
+                  key={item}
+                  href="https://wa.me/SEUNUMEROAQUI" // Substitua pelo número desejado
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white hover:text-cyan-400 transition-colors duration-300 font-medium"
+                >
+                  {item}
+                </a>
+              ) : (
+                <button
+                  key={item}
+                  onClick={() => handleMenuClick(item)}
+                  className="text-white hover:text-cyan-400 transition-colors duration-300 font-medium"
+                >
+                  {item}
+                </button>
+              )
+            )}
           </div>
 
           <Link

@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: "/ultimoseventos/paradiseedition",
   },
   openGraph: {
-    title: "BOREAL CLUB - PARADISE EDITION | 15 de Agosto, 2025",
+    title: "BOREAL CLUB - PARADISE EDITION | 2 de Fevereiro, 2025",
     description:
       "A experiência mais imersiva de música eletrônica do Brasil. Uma noite inesquecível com os melhores DJs da cena nacional, em um ambiente paradisíaco à beira-mar no Paradise Beach Club.",
     url: "https://borealcrew.vercel.app/ultimoseventos/paradiseedition",
