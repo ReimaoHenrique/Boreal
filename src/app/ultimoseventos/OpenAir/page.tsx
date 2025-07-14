@@ -29,16 +29,6 @@ const event = {
     "Meet & Greet com os artistas",
   ],
 
-  gallery: [
-    "/assets/events/ParadiseEdition/CapaParadiseEdition.jpg",
-    "/assets/events/ParadiseEdition/dj3.webp",
-    "/assets/events/ParadiseEdition/dj4.webp",
-    "/assets/events/ParadiseEdition/djSevem.webp",
-    "/assets/events/ParadiseEdition/djsnow.webp",
-    "/assets/events/ParadiseEdition/zerks.webp",
-    "/assets/events/ParadiseEdition/alfa.webp",
-    "/assets/events/ParadiseEdition/necro.webp",
-  ],
   artists: [
     {
       id: "alfa",
@@ -150,7 +140,7 @@ const event = {
   ],
 };
 
-export default function ParadiseEditionPage() {
+export default function OpenAirPage() {
   const lineupRef = useRef<HTMLDivElement>(null);
   return (
     <div className="relative overflow-x-hidden">
