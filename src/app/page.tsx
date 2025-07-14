@@ -5,7 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import EventCard from "@/components/EventCard";
 import MarqueeArtistGroup from "@/components/MarqueeArtistGroup";
-import ImageCarousel from "@/components/ImageCarousel";
+import { BlurFade } from "@/components/magicui/blur-fade";
 
 export default function Home() {
   // Data do evento - 20 de Setembro, 2025 às 20:00
@@ -226,23 +226,46 @@ export default function Home() {
           >
             Galeria de Eventos
           </motion.h2>
-
-          <div className="max-w-4xl mx-auto">
-            <ImageCarousel
-              images={[
-                "/assets/events/FirstDance/CapaFirstDance.webp",
-                "/assets/events/FirstDance/478638833_17845098600417524_5436293515917825999_n.jpg",
-                "/assets/events/ParadiseEdition/CapaParadiseEdition.jpg",
-                "/assets/events/ParadiseEdition/necro.webp",
-                "/assets/events/ParadiseEdition/zerks.webp",
-                "/assets/events/ParadiseEdition/alfa.webp",
-                "/assets/events/ParadiseEdition/dj4.webp",
-                "/assets/events/ParadiseEdition/dj3.webp",
-                "/assets/events/ParadiseEdition/djSevem.webp",
-                "/assets/events/ParadiseEdition/djsnow.webp",
-                "/assets/events/OpenAir/CapaOpenAir.jpeg",
-              ]}
-            />
+          <div className="columns-2 gap-4 sm:columns-3">
+            {[
+              // Fotos FirstDance
+              "/assets/events/FirstDance/CapaFirstDance.webp",
+              "/assets/events/FirstDance/478638833_17845098600417524_5436293515917825999_n.jpg",
+              // Fotos ParadiseEdition
+              "/assets/events/ParadiseEdition/CapaParadiseEdition.jpg",
+              "/assets/events/ParadiseEdition/necro.webp",
+              "/assets/events/ParadiseEdition/zerks.webp",
+              "/assets/events/ParadiseEdition/alfa.webp",
+              "/assets/events/ParadiseEdition/dj4.webp",
+              "/assets/events/ParadiseEdition/dj3.webp",
+              "/assets/events/ParadiseEdition/djSevem.webp",
+              "/assets/events/ParadiseEdition/djsnow.webp",
+              // Fotos OpenAir
+              "/assets/events/OpenAir/CapaOpenAir.jpeg",
+              // Vídeos ParadiseEdition
+              "/assets/events/ParadiseEdition/videoParadise.mp4",
+              // Vídeos gerais
+              "/assets/events/videos/hero.mp4",
+              "/assets/events/videos/video-pista-parad.mp4",
+            ].map((mediaUrl, idx) => (
+              <BlurFade key={mediaUrl} delay={0.25 + idx * 0.05} inView>
+                {mediaUrl.endsWith(".mp4") ? (
+                  <video
+                    className="mb-4 w-full rounded-lg object-contain"
+                    src={mediaUrl}
+                    controls
+                    preload="none"
+                    style={{ maxHeight: 400 }}
+                  />
+                ) : (
+                  <img
+                    className="mb-4 w-full rounded-lg object-contain"
+                    src={mediaUrl}
+                    alt={`Foto ou vídeo do evento ${idx + 1}`}
+                  />
+                )}
+              </BlurFade>
+            ))}
           </div>
         </div>
       </section>
