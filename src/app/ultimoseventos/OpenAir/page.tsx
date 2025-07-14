@@ -15,7 +15,7 @@ import Image from "next/image";
 const event = {
   name: "Boreal  Open Air",
   date: "16 de Março, 2025",
-  time: "19:00 - 06:00",
+  time: "09:00 - 22:00",
   location: "Jauá , Camaçari - BA",
   status: "Ultimo Evento",
   capacidade: "500",
@@ -144,7 +144,7 @@ const event = {
       title: "Snow",
     },
     {
-      time: "22:00",
+      time: "23:00",
       title: "Fim de festa",
     },
   ],
@@ -158,7 +158,7 @@ export default function ParadiseEditionPage() {
       <ParticleBackground particleCount={30} />
 
       {/* Hero Section com Vídeo */}
-      <HeroVideo>
+      <HeroVideo videoUrl="/assets/events/OpenAir/OpenAir.mp4">
         <div className="text-center">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
@@ -264,7 +264,7 @@ export default function ParadiseEditionPage() {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-6xl font-bold mb-8 text-glow-purple font-advent">
-              SOBRE O PARADISE EDITION
+              Sobre a Boreal Open
             </h2>
             <p className="text-xl text-cyan-300 max-w-3xl mx-auto mb-12">
               Uma experiência única que combina música eletrônica de alta
@@ -284,22 +284,13 @@ export default function ParadiseEditionPage() {
                 A EXPERIÊNCIA
               </h3>
               <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-                O Paradise Edition é mais que um evento de música eletrônica - é
-                uma jornada sensorial completa. Imagine estar em um ambiente
-                paradisíaco à beira-mar, com as melhores batidas eletrônicas
-                pulsando através de um sistema de som de última geração,
-                enquanto lasers e luzes criam uma atmosfera mágica ao seu redor.
-              </p>
-              <p className="text-lg text-gray-300 mb-6 leading-relaxed">
-                Durante 10 horas ininterruptas, você será transportado para
-                outra dimensão através da música dos melhores DJs da cena
-                nacional. Cada set foi cuidadosamente selecionado para criar uma
-                progressão perfeita de energia e emoção.
-              </p>
-              <p className="text-lg text-gray-300 leading-relaxed">
-                Além da música, oferecemos uma, áreas VIP exclusivas e a
-                oportunidade de conhecer pessoalmente os artistas que fazem a
-                história da música eletrônica.
+                A primeira edição da Boreal Open Air foi uma experiência
+                inesquecível de união, arte e celebração. Com a sensação de
+                dever cumprido, agradecemos a todos que tornaram esse sonho
+                possível — desde a produção até cada setor envolvido. Ver o
+                público vibrando em harmonia, com conforto e respeito, foi nossa
+                maior recompensa. Gratidão imensa a todos os colaboradores e
+                presentes. Até a próxima! – Equipe Boreal 🌌✨
               </p>
             </motion.div>
 
@@ -329,9 +320,7 @@ export default function ParadiseEditionPage() {
                   </li>
                   <li className="flex items-start">
                     <span className="text-cyan-400 mr-3 text-xl">✦</span>
-                    <span className="text-gray-300">
-                      Área VIP com vista privilegiada
-                    </span>
+                    <span className="text-gray-300">Espaço com piscina</span>
                   </li>
                 </ul>
               </div>
