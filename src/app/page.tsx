@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import EventCard from "@/components/EventCard";
 import MarqueeArtistGroup from "@/components/MarqueeArtistGroup";
 import { BlurFade } from "@/components/magicui/blur-fade";
+import Image from "next/image";
 
 export default function Home() {
   // Data do evento - 20 de Setembro, 2025 às 20:00
@@ -251,19 +252,35 @@ export default function Home() {
             ].map((mediaUrl, idx) => (
               <BlurFade key={mediaUrl} delay={0.25 + idx * 0.05} inView>
                 {mediaUrl.endsWith(".mp4") ? (
-                  <video
-                    className="mb-4 w-full rounded-lg object-contain"
-                    src={mediaUrl}
-                    controls
-                    preload="none"
-                    style={{ maxHeight: 400 }}
-                  />
+                  <div className="mb-4 w-full rounded-lg overflow-hidden">
+                    <video
+                      className="w-full object-contain"
+                      src={mediaUrl}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="auto"
+                      webkit-playsinline="true"
+                      x5-playsinline="true"
+                      x5-video-player-type="h5"
+                      x5-video-player-fullscreen="false"
+                      disablePictureInPicture
+                      controlsList="nodownload nofullscreen noremoteplayback"
+                    />
+                  </div>
                 ) : (
-                  <img
-                    className="mb-4 w-full rounded-lg object-contain"
-                    src={mediaUrl}
-                    alt={`Foto ou vídeo do evento ${idx + 1}`}
-                  />
+                  <div className="mb-4 w-full rounded-lg overflow-hidden">
+                    <Image
+                      src={mediaUrl}
+                      alt={`Foto ou vídeo do evento ${idx + 1}`}
+                      width={800}
+                      height={600}
+                      className="w-full rounded-lg object-contain"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      priority={idx < 2}
+                    />
+                  </div>
                 )}
               </BlurFade>
             ))}

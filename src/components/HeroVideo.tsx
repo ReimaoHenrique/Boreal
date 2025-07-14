@@ -13,53 +13,115 @@ const HeroVideo: React.FC<HeroVideoProps> = ({
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [showPlayButton, setShowPlayButton] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
+    // Detectar se é dispositivo móvel
+    const checkMobile = () => {
+      const userAgent =
+        navigator.userAgent ||
+        navigator.vendor ||
+        (window as unknown as { opera?: string }).opera ||
+        "";
+      const isMobileDevice =
+        /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(
+          userAgent.toLowerCase()
+        );
+      setIsMobile(isMobileDevice);
+    };
+
+    checkMobile();
+
     const video = videoRef.current;
     if (!video) return;
 
-    // Verificar se o vídeo está tocando
-    const checkPlayback = () => {
-      if (video.paused) {
+    // Função para tentar reproduzir o vídeo
+    const attemptAutoplay = async () => {
+      try {
+        // Garantir que o vídeo está mutado para autoplay funcionar
+        video.muted = true;
+        video.volume = 0;
+
+        // Tentar reproduzir
+        await video.play();
+        setIsPlaying(true);
+        setShowPlayButton(false);
+      } catch (error) {
+        console.log("Autoplay falhou, mostrando botão de play:", error);
         setShowPlayButton(true);
         setIsPlaying(false);
-      } else {
-        setShowPlayButton(false);
-        setIsPlaying(true);
       }
     };
 
     // Event listeners
-    video.addEventListener("play", () => setIsPlaying(true));
-    video.addEventListener("pause", () => setIsPlaying(false));
-    video.addEventListener("canplay", checkPlayback);
-    video.addEventListener("error", () => setShowPlayButton(true));
+    const handlePlay = () => {
+      setIsPlaying(true);
+      setShowPlayButton(false);
+    };
+
+    const handlePause = () => {
+      setIsPlaying(false);
+      if (isMobile) {
+        setShowPlayButton(true);
+      }
+    };
+
+    const handleCanPlay = () => {
+      // Tentar autoplay quando o vídeo estiver pronto
+      if (!isPlaying) {
+        attemptAutoplay();
+      }
+    };
+
+    const handleError = () => {
+      setShowPlayButton(true);
+      setIsPlaying(false);
+    };
+
+    video.addEventListener("play", handlePlay);
+    video.addEventListener("pause", handlePause);
+    video.addEventListener("canplay", handleCanPlay);
+    video.addEventListener("error", handleError);
+    video.addEventListener("loadeddata", handleCanPlay);
+
+    // Tentar autoplay inicial
+    attemptAutoplay();
 
     // Verificar após um tempo se o autoplay funcionou
-    const timeout = setTimeout(checkPlayback, 2000);
+    const timeout = setTimeout(() => {
+      if (video.paused) {
+        setShowPlayButton(true);
+        setIsPlaying(false);
+      }
+    }, 3000);
 
     return () => {
-      video.removeEventListener("play", () => setIsPlaying(true));
-      video.removeEventListener("pause", () => setIsPlaying(false));
-      video.removeEventListener("canplay", checkPlayback);
-      video.removeEventListener("error", () => setShowPlayButton(true));
+      video.removeEventListener("play", handlePlay);
+      video.removeEventListener("pause", handlePause);
+      video.removeEventListener("canplay", handleCanPlay);
+      video.removeEventListener("error", handleError);
+      video.removeEventListener("loadeddata", handleCanPlay);
       clearTimeout(timeout);
     };
-  }, []);
+  }, [isPlaying]);
 
-  const handlePlay = () => {
+  const handlePlay = async () => {
     const video = videoRef.current;
     if (video) {
-      video
-        .play()
-        .then(() => {
-          setIsPlaying(true);
-          setShowPlayButton(false);
-        })
-        .catch(() => {
-          setShowPlayButton(true);
-        });
+      try {
+        // Garantir que está mutado
+        video.muted = true;
+        video.volume = 0;
+
+        await video.play();
+        setIsPlaying(true);
+        setShowPlayButton(false);
+      } catch (error) {
+        console.log("Falha ao reproduzir vídeo:", error);
+        setShowPlayButton(true);
+        setIsPlaying(false);
+      }
     }
   };
 
@@ -80,6 +142,8 @@ const HeroVideo: React.FC<HeroVideoProps> = ({
           x5-playsinline="true"
           x5-video-player-type="h5"
           x5-video-player-fullscreen="false"
+          disablePictureInPicture
+          controlsList="nodownload nofullscreen noremoteplayback"
         />
         {/* Overlay para escurecer o vídeo */}
         <div className="absolute inset-0 bg-black/40" />

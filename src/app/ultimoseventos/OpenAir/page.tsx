@@ -218,24 +218,31 @@ export default function OpenAirPage() {
               ].map((mediaUrl, idx) => (
                 <BlurFade key={mediaUrl} delay={0.25 + idx * 0.05} inView>
                   {mediaUrl.endsWith(".mp4") ? (
-                    <video
-                      className="mb-4 w-full rounded-lg object-contain"
-                      src={mediaUrl}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                    />
+                    <div className="mb-4 w-full rounded-lg overflow-hidden">
+                      <video
+                        className="w-full h-full object-contain"
+                        src={mediaUrl}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="auto"
+                        webkit-playsinline="true"
+                        x5-playsinline="true"
+                        x5-video-player-type="h5"
+                        x5-video-player-fullscreen="false"
+                        disablePictureInPicture
+                        controlsList="nodownload nofullscreen noremoteplayback"
+                      />
+                    </div>
                   ) : (
-                    <div
-                      className="relative mb-4 w-full rounded-lg object-contain"
-                      style={{ aspectRatio: "4/3" }}
-                    >
+                    <div className="mb-4 w-full rounded-lg overflow-hidden">
                       <Image
                         src={mediaUrl}
                         alt={`Foto ou vídeo do evento ${idx + 1}`}
-                        fill
-                        className="rounded-lg object-cover"
+                        width={800}
+                        height={600}
+                        className="w-full rounded-lg object-contain"
                         sizes="(max-width: 768px) 100vw, 33vw"
                         priority={idx < 2}
                       />
