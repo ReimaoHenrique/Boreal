@@ -10,6 +10,7 @@ import EventTimeline from "@/components/EventTimeline";
 import { useRef } from "react";
 import { BlurFade } from "@/components/magicui/blur-fade";
 import Image from "next/image";
+import AutoPlayVideo from "@/components/AutoPlayVideo";
 
 // Dados do evento
 const event = {
@@ -219,20 +220,9 @@ export default function OpenAirPage() {
                 <BlurFade key={mediaUrl} delay={0.25 + idx * 0.05} inView>
                   {mediaUrl.endsWith(".mp4") ? (
                     <div className="mb-4 w-full rounded-lg overflow-hidden">
-                      <video
-                        className="w-full h-full object-contain"
+                      <AutoPlayVideo
                         src={mediaUrl}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        preload="auto"
-                        webkit-playsinline="true"
-                        x5-playsinline="true"
-                        x5-video-player-type="h5"
-                        x5-video-player-fullscreen="false"
-                        disablePictureInPicture
-                        controlsList="nodownload nofullscreen noremoteplayback"
+                        className="w-full h-full object-contain"
                       />
                     </div>
                   ) : (
